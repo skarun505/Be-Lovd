@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be'Lovd - Premium Valentine's Day Cakes Online | Order Fresh Cakes</title>
+    <meta name="description"
+        content="Order premium Valentine's Day cakes online. Free delivery, fresh baked daily. Shop chocolate cakes, strawberry cakes, red velvet & more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">Rs. 0</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">Be'Lovd</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#products">CAKES</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="cart-icon-btn" onclick="window.location.href='cart.html'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-main" id="home">
+        <div class="hero-main-content">
+            <div class="hero-text">
+                <h1 class="hero-main-title">Premium Valentine's Day Cakes</h1>
+                <p class="hero-main-subtitle">Freshly Baked | Same Day Delivery | Made with Love</p>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Free Delivery Above Rs. 999</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>100% Fresh Ingredients</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Same Day Delivery Available</span>
+                    </div>
+                </div>
+                <button class="cta-btn-main"
+                    onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+            </div>
+            <div class="hero-main-image">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=600&fit=crop&q=85"
+                    alt="Valentine's Day Cake" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <h2 class="section-title">Our Valentine's Collection</h2>
+            <p class="section-subtitle">Handcrafted with premium ingredients, baked fresh daily</p>
+
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-name="Red Velvet Heart Cake" data-price="1299"
+                    data-image="https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400&h=400&fit=crop&q=80">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400&h=400&fit=crop&q=80"
+                            alt="Red Velvet Heart Cake" class="product-img" loading="lazy">
+                        <div class="product-badge">Bestseller</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Red Velvet Heart Cake</h3>
+                        <p class="product-desc">Classic red velvet with cream cheese frosting</p>
+                        <div class="product-details">
+                            <span class="product-weight">1 Kg</span>
+                            <span class="product-serves">Serves 8-10</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">Rs. 1,299</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-name="Chocolate Truffle Delight" data-price="1499"
+                    data-image="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop&q=80">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop&q=80"
+                            alt="Chocolate Truffle Cake" class="product-img" loading="lazy">
+                        <div class="product-badge">Premium</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Chocolate Truffle Delight</h3>
+                        <p class="product-desc">Rich Belgian chocolate with truffle layers</p>
+                        <div class="product-details">
+                            <span class="product-weight">1 Kg</span>
+                            <span class="product-serves">Serves 8-10</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">Rs. 1,499</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-name="Strawberry Romance Cake" data-price="1199"
+                    data-image="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=400&fit=crop&q=80">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=400&fit=crop&q=80"
+                            alt="Strawberry Cake" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Strawberry Romance Cake</h3>
+                        <p class="product-desc">Fresh strawberries with vanilla cream</p>
+                        <div class="product-details">
+                            <span class="product-weight">1 Kg</span>
+                            <span class="product-serves">Serves 8-10</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">Rs. 1,199</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" data-name="Black Forest Classic" data-price="1099"
+                    data-image="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=400&h=400&fit=crop&q=80">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=400&h=400&fit=crop&q=80"
+                            alt="Black Forest Cake" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Black Forest Classic</h3>
+                        <p class="product-desc">Chocolate sponge with cherries and cream</p>
+                        <div class="product-details">
+                            <span class="product-weight">1 Kg</span>
+                            <span class="product-serves">Serves 8-10</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">Rs. 1,099</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card" data-name="White Forest Special" data-price="1249"
+                    data-image="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=400&fit=crop&q=80">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=400&fit=crop&q=80"
+                            alt="White Forest Cake" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">White Forest Special</h3>
+                        <p class="product-desc">Vanilla sponge with white chocolate shavings</p>
+                        <div class="product-details">
+                            <span class="product-weight">1 Kg</span>
+                            <span class="product-serves">Serves 8-10</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">Rs. 1,249</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card" data-name="Pineapple Paradise" data-price="999"
+                    data-image="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=400&fit=crop&q=80">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=400&fit=crop&q=80"
+                            alt="Pineapple Cake" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Pineapple Paradise</h3>
+                        <p class="product-desc">Tropical pineapple with vanilla sponge</p>
+                        <div class="product-details">
+                            <span class="product-weight">1 Kg</span>
+                            <span class="product-serves">Serves 8-10</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">Rs. 999</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card" data-name="Butterscotch Dream" data-price="1149"
+                    data-image="https://images.unsplash.com/photo-1558312657-e0d05a5bf7ed?w=400&h=400&fit=crop&q=80">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1558312657-e0d05a5bf7ed?w=400&h=400&fit=crop&q=80"
+                            alt="Butterscotch Cake" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Butterscotch Dream</h3>
+                        <p class="product-desc">Crunchy butterscotch bits with caramel</p>
+                        <div class="product-details">
+                            <span class="product-weight">1 Kg</span>
+                            <span class="product-serves">Serves 8-10</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">Rs. 1,149</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card" data-name="Choco Vanilla Swirl" data-price="1099"
+                    data-image="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400&h=400&fit=crop&q=80">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400&h=400&fit=crop&q=80"
+                            alt="Chocolate Vanilla Cake" class="product-img" loading="lazy">
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Choco Vanilla Swirl</h3>
+                        <p class="product-desc">Perfect blend of chocolate and vanilla</p>
+                        <div class="product-details">
+                            <span class="product-weight">1 Kg</span>
+                            <span class="product-serves">Serves 8-10</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">Rs. 1,099</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card" data-name="Blueberry Bliss" data-price="1399"
+                    data-image="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=400&fit=crop&q=80">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=400&fit=crop&q=80"
+                            alt="Blueberry Cake" class="product-img" loading="lazy">
+                        <div class="product-badge">Premium</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Blueberry Bliss</h3>
+                        <p class="product-desc">Fresh blueberries with cream cheese</p>
+                        <div class="product-details">
+                            <span class="product-weight">1 Kg</span>
+                            <span class="product-serves">Serves 8-10</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">Rs. 1,399</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Be'Lovd</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>Only the finest ingredients go into our cakes</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13"></rect>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                        </svg>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Same day delivery available in select areas</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3>Expert Bakers</h3>
+                    <p>Crafted by experienced pastry chefs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>100% Fresh</h3>
+                    <p>Baked fresh daily with no preservatives</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About Be'Lovd</h2>
+                    <p>Since 2020, Be'Lovd has been crafting premium cakes that celebrate life's special moments. Our
+                        Valentine's collection is designed to express love through exceptional taste and quality.</p>
+                    <p>Each cake is handmade by our expert pastry chefs using only the finest ingredients - Belgian
+                        chocolate, fresh fruits, pure vanilla, and premium dairy products.</p>
+                    <p>We believe that every celebration deserves a cake that's as special as the occasion itself.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10,000+</div>
+                            <div class="stat-label">Happy Customers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Cake Varieties</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Fresh & Natural</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=500&h=600&fit=crop&q=85"
+                        alt="About Be'Lovd" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-logo">Be'Lovd</h3>
+                    <p class="footer-tagline">Premium Cakes, Baked with Love</p>
+                    <div class="contact-info">
+                        <p>Phone: +91 98765 43210</p>
+                        <p>Email: orders@belovd.com</p>
+                        <p>Address: 123 Baker Street, Mumbai</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Our Cakes</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Policies</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Payment Methods</h4>
+                    <p>We accept all major payment methods</p>
+                    <div class="payment-icons">
+                        <span>Cards</span>
+                        <span>UPI</span>
+                        <span>Wallets</span>
+                        <span>COD</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Be'Lovd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
