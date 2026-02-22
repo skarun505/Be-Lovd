@@ -1,0 +1,548 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - Be'Lovd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .confirmation-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #FFE5EC 0%, #FFFFFF 100%);
+        }
+
+        .confirmation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .success-icon svg {
+            color: white;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .confirmation-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2C1810;
+            margin-bottom: 1rem;
+        }
+
+        .confirmation-subtitle {
+            font-size: 1.2rem;
+            color: #6B5B52;
+            margin-bottom: 3rem;
+        }
+
+        .order-details-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .order-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .order-detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .order-detail-label {
+            color: #6B5B52;
+            font-weight: 500;
+        }
+
+        .order-detail-value {
+            color: #2C1810;
+            font-weight: 600;
+        }
+
+        .order-number {
+            font-size: 1.5rem;
+            color: #FF6B9D;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B9D, #C9184A);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #FF6B9D;
+            border: 2px solid #FF6B9D;
+        }
+
+        .btn-secondary:hover {
+            background: #FFE5EC;
+        }
+
+        .contact-info {
+            background: #FFF5F7;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: #2C1810;
+        }
+
+        .contact-info p {
+            color: #6B5B52;
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .confirmation-title {
+                font-size: 2rem;
+            }
+
+            .order-details-card {
+                padding: 1.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">Be'Lovd</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Confirmation Content -->
+    <section class="confirmation-section">
+        <div class="confirmation-container">
+            <div class="success-icon">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+
+            <h1 class="confirmation-title">Order Confirmed!</h1>
+            <p class="confirmation-subtitle">Thank you for your order. We'll send you a confirmation email shortly.</p>
+
+            <div class="order-details-card">
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Order Number</span>
+                    <span class="order-detail-value order-number" id="orderNumber">BL2026001</span>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Order Date</span>
+                    <span class="order-detail-value" id="orderDate"></span>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Delivery Date</span>
+                    <span class="order-detail-value" id="deliveryDate">14 Feb 2026</span>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Total Amount</span>
+                    <span class="order-detail-value" id="totalAmount">Rs. 0</span>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Payment Method</span>
+                    <span class="order-detail-value" id="paymentMethod">Cash on Delivery</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="index.html" class="btn-primary">Continue Shopping</a>
+                <a href="javascript:window.print()" class="btn-secondary">Print Receipt</a>
+            </div>
+
+            <div class="contact-info">
+                <h3>Need Help?</h3>
+                <p>If you have any questions about your order, please contact us:</p>
+                <p><strong>Phone:</strong> +91 98765 43210</p>
+                <p><strong>Email:</strong> orders@belovd.com</p>
+                <p><strong>WhatsApp:</strong> +91 98765 43210</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Display current date
+        document.getElementById('orderDate').textContent = new Date().toLocaleDateString('en-IN', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+
+        // Generate random order number
+        const orderNum = 'BL' + new Date().getFullYear() + Math.floor(Math.random() * 100000).toString().padStart(5, '0');
+        document.getElementById('orderNumber').textContent = orderNum;
+
+        // Load total from localStorage
+        const orderData = JSON.parse(localStorage.getItem('lastOrder') || '{}');
+        if (orderData.total) {
+            document.getElementById('totalAmount').textContent = 'Rs. ' + orderData.total.toLocaleString('en-IN');
+        }
+        if (orderData.paymentMethod) {
+            document.getElementById('paymentMethod').textContent = orderData.paymentMethod === 'cod' ? 'Cash on Delivery' : 'Online Payment';
+        }
+        if (orderData.deliveryDate) {
+            document.getElementById('deliveryDate').textContent = new Date(orderData.deliveryDate).toLocaleDateString('en-IN', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+
+        // Clear cart after order
+        localStorage.removeItem('belovd_cart');
+    </script>
+</body>
+
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - Be'Lovd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .confirmation-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #FFE5EC 0%, #FFFFFF 100%);
+        }
+
+        .confirmation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .success-icon svg {
+            color: white;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .confirmation-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2C1810;
+            margin-bottom: 1rem;
+        }
+
+        .confirmation-subtitle {
+            font-size: 1.2rem;
+            color: #6B5B52;
+            margin-bottom: 3rem;
+        }
+
+        .order-details-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .order-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .order-detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .order-detail-label {
+            color: #6B5B52;
+            font-weight: 500;
+        }
+
+        .order-detail-value {
+            color: #2C1810;
+            font-weight: 600;
+        }
+
+        .order-number {
+            font-size: 1.5rem;
+            color: #FF6B9D;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B9D, #C9184A);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #FF6B9D;
+            border: 2px solid #FF6B9D;
+        }
+
+        .btn-secondary:hover {
+            background: #FFE5EC;
+        }
+
+        .contact-info {
+            background: #FFF5F7;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: #2C1810;
+        }
+
+        .contact-info p {
+            color: #6B5B52;
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .confirmation-title {
+                font-size: 2rem;
+            }
+
+            .order-details-card {
+                padding: 1.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">Be'Lovd</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Confirmation Content -->
+    <section class="confirmation-section">
+        <div class="confirmation-container">
+            <div class="success-icon">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+
+            <h1 class="confirmation-title">Order Confirmed!</h1>
+            <p class="confirmation-subtitle">Thank you for your order. We'll send you a confirmation email shortly.</p>
+
+            <div class="order-details-card">
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Order Number</span>
+                    <span class="order-detail-value order-number" id="orderNumber">BL2026001</span>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Order Date</span>
+                    <span class="order-detail-value" id="orderDate"></span>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Delivery Date</span>
+                    <span class="order-detail-value" id="deliveryDate">14 Feb 2026</span>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Total Amount</span>
+                    <span class="order-detail-value" id="totalAmount">Rs. 0</span>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Payment Method</span>
+                    <span class="order-detail-value" id="paymentMethod">Cash on Delivery</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="index.html" class="btn-primary">Continue Shopping</a>
+                <a href="javascript:window.print()" class="btn-secondary">Print Receipt</a>
+            </div>
+
+            <div class="contact-info">
+                <h3>Need Help?</h3>
+                <p>If you have any questions about your order, please contact us:</p>
+                <p><strong>Phone:</strong> +91 98765 43210</p>
+                <p><strong>Email:</strong> orders@belovd.com</p>
+                <p><strong>WhatsApp:</strong> +91 98765 43210</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Display current date
+        document.getElementById('orderDate').textContent = new Date().toLocaleDateString('en-IN', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+
+        // Generate random order number
+        const orderNum = 'BL' + new Date().getFullYear() + Math.floor(Math.random() * 100000).toString().padStart(5, '0');
+        document.getElementById('orderNumber').textContent = orderNum;
+
+        // Load total from localStorage
+        const orderData = JSON.parse(localStorage.getItem('lastOrder') || '{}');
+        if (orderData.total) {
+            document.getElementById('totalAmount').textContent = 'Rs. ' + orderData.total.toLocaleString('en-IN');
+        }
+        if (orderData.paymentMethod) {
+            document.getElementById('paymentMethod').textContent = orderData.paymentMethod === 'cod' ? 'Cash on Delivery' : 'Online Payment';
+        }
+        if (orderData.deliveryDate) {
+            document.getElementById('deliveryDate').textContent = new Date(orderData.deliveryDate).toLocaleDateString('en-IN', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+
+        // Clear cart after order
+        localStorage.removeItem('belovd_cart');
+    </script>
+</body>
+
+>>>>>>> 232031e4dd04047ed6559d03af03add0e5aaeef1
+</html>
