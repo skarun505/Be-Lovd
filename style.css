@@ -6,70 +6,58 @@
 
 /* ===== VARIABLES ===== */
 :root {
-    /* ── Brand Palette ── */
-    --pink: #F2B5C8;
-    /* packaging pink bag / boxes       */
-    --pink-light: #FAE0E9;
-    /* very soft pink tint               */
-    --pink-dark: #D4869F;
-    /* deeper rose for hover             */
+    /* ── Artisan Bakery Palette ── */
+    --plum: #431C1A;
+    /* Deep dark brown for headings */
+    --plum-dark: #32100E;
+    /* Darkest var (footer bg) */
 
-    --lavender: #C4A8D4;
-    /* purple gift box                   */
-    --lavender-light: #EDE5F5;
-    /* background tint                   */
-    --lavender-dark: #9B7DB8;
-    /* hover / active                    */
+    --cta-bg: #C15E39;
+    /* Terracotta/rust for buttons & accents */
+    --cta-hover: #A04A26;
+    /* Darker terracotta for hover */
+    --label-color: #C15E39;
+    /* Section labels */
 
-    --mint: #B8DDD0;
-    /* mint flat box                     */
-    --mint-light: #E4F5F0;
-    /* section bg tint                   */
-    --mint-dark: #7DB8A6;
-    /* accent                            */
+    --text-dark: #333333;
+    /* Body text */
+    --text-muted: #888888;
+    /* Muted text for descriptions */
 
-    --gold: #C9A96E;
-    /* metallic script                   */
-    --gold-dark: #A0813E;
-    /* label / hover                     */
+    --bg: #FAFAFA;
+    /* Page background */
+    --white: #FFFFFF;
+    /* Cards and sections */
+    --border: #EEEEEE;
+    /* Subtle border */
 
-    --plum: #5C3D6B;
-    /* deepest brand purple              */
-    --plum-dark: #3D2549;
-    /* footer / dark bg                  */
+    /* ── Neutralize old Pastel Tokens ── */
+    --pink: var(--cta-bg);
+    --pink-light: var(--bg);
+    --pink-dark: var(--cta-hover);
+
+    --lavender: var(--border);
+    --lavender-light: var(--white);
+    --lavender-dark: var(--cta-bg);
+
+    --mint: var(--bg);
+    --mint-light: var(--white);
+    --mint-dark: var(--cta-bg);
+
+    --gold: var(--label-color);
+    --gold-dark: var(--cta-hover);
+
+    --bg-pink: var(--bg);
+    --bg-lavender: var(--white);
+    --bg-mint: var(--white);
 
     /* ── UI Tokens ── */
-    --cta-bg: var(--plum);
-    /* primary buttons           */
-    --cta-hover: var(--plum-dark);
-    /* button hover              */
-    --label-color: var(--gold);
-    /* section labels            */
-    --accent: var(--pink);
-    /* highlights / tags         */
-    --accent-hover: var(--pink-dark);
-    /* accent hover              */
+    --accent: var(--cta-bg);
+    --accent-hover: var(--cta-hover);
 
-    --text-dark: #3A2A40;
-    /* body text                         */
-    --text-mid: #5A4A60;
-    /* sub headings                      */
-    --text-muted: #9A8CA0;
-    /* muted / placeholder               */
-
-    --bg: #FAF8FC;
-    /* page background (very soft lilac white) */
-    --bg-pink: var(--pink-light);
-    --bg-lavender: var(--lavender-light);
-    --bg-mint: var(--mint-light);
-
-    --white: #ffffff;
-    --border: #EAE0F0;
-    /* lavender-tinted border            */
-
-    --shadow-sm: 0 2px 10px rgba(92, 61, 107, 0.07);
-    --shadow-md: 0 8px 28px rgba(92, 61, 107, 0.10);
-    --shadow-lg: 0 20px 54px rgba(92, 61, 107, 0.14);
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.08);
 
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
@@ -203,7 +191,7 @@ img {
 .btn-cta:hover {
     background: var(--plum-dark);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(92, 61, 107, 0.3);
+    box-shadow: 0 8px 20px rgba(67, 28, 26, 0.2);
 }
 
 .btn-primary {
@@ -490,7 +478,7 @@ img {
     right: -80px;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(194, 168, 212, 0.3) 0%, transparent 70%);
+    background: none;
     border-radius: 50%;
     z-index: 0;
 }
@@ -502,7 +490,7 @@ img {
     left: -60px;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(184, 221, 208, 0.25) 0%, transparent 70%);
+    background: none;
     border-radius: 50%;
     z-index: 0;
 }
@@ -1090,7 +1078,7 @@ img {
 .form-group:focus-within {
     border-color: var(--lavender-dark);
     background: var(--white);
-    box-shadow: 0 0 0 3px rgba(155, 125, 184, 0.15);
+    box-shadow: 0 0 0 3px rgba(193, 94, 57, 0.15);
 }
 
 .form-group i {
@@ -1384,5 +1372,161 @@ img {
 
     .section-title {
         font-size: 2rem;
+    }
+}
+
+/* ===== NEW REDESIGN STYLES ===== */
+.img-hover-zoom {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.img-hover-zoom:hover {
+    transform: scale(1.03);
+}
+
+.img-container {
+    overflow: hidden;
+}
+
+.img-zoom {
+    transition: transform 0.6s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-hover:hover .img-zoom {
+    transform: scale(1.08);
+}
+
+.badge-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--plum);
+    color: var(--white);
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    z-index: 2;
+    letter-spacing: 1px;
+}
+
+.new-tag {
+    background: #C15E39;
+}
+
+.gift-tag {
+    background: #A04A26;
+}
+
+.hp-info,
+.mc-info {
+    padding: 1rem;
+    text-align: left;
+}
+
+.hp-hook {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+.hp-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quick-add-btn {
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.quick-add-btn:hover {
+    background: var(--cta-bg);
+    color: var(--white);
+    border-color: var(--cta-bg);
+}
+
+.hot-product-card {
+    position: relative;
+}
+
+/* Trust Section */
+.trust-card {
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.trust-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Mobile Bottom Bar Elements */
+.mobile-bottom-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    padding: 0.5rem 0;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.m-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.m-nav-item i {
+    font-size: 1.2rem;
+}
+
+.m-nav-item.active,
+.m-nav-item:hover {
+    color: var(--cta-bg);
+}
+
+.m-nav-item.whatsapp {
+    color: #25D366;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 60px;
+        /* Space for mobile bar */
+    }
+
+    .mobile-bottom-bar {
+        display: flex;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr !important;
     }
 }

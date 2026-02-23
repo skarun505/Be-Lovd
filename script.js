@@ -102,7 +102,7 @@ function showNotification(message) {
         position: 'fixed',
         bottom: '30px',
         right: '30px',
-        background: '#8B3A1A',
+        background: '#431C1A',
         color: 'white',
         padding: '0.9rem 1.8rem',
         borderRadius: '8px',

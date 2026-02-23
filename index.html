@@ -53,9 +53,11 @@
             <a href="#" class="logo">BE'LOVD.</a>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#menu" class="nav-link">Menu</a></li>
-                <li><a href="#reservations" class="nav-link">Reservations</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#bestsellers" class="nav-link">Bestsellers</a></li>
+                <li><a href="#gifting" class="nav-link">Gift Boxes</a></li>
+                <li><a href="#menu" class="nav-link">Shop</a></li>
+                <li><a href="#why-us" class="nav-link">About</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
 
@@ -80,88 +82,42 @@
     <section class="hero-section" id="home">
         <div class="container hero-grid">
             <div class="hero-content">
-                <h1 class="hero-title">The perfect cake<br>every time!</h1>
-                <p class="hero-desc">
-                    We are a company dedicated to the preparation of cakes and delicacies, providing our
-                    customers with a product always fresh and straight from the oven.
+                <h1 class="hero-title"
+                    style="margin-bottom: 0.5rem; font-size: clamp(3rem, 6.5vw, 4.5rem); letter-spacing: -1px;">Freshly
+                    Baked.<br>Deeply Indulgent.</h1>
+                <p class="hero-desc"
+                    style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 2rem; font-weight: 500;">
+                    Handcrafted brownies made with premium ingredients & delivered straight to your doorstep.
                 </p>
-                <button class="btn-cta" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
-                    DISCOVER MENU <i class="fa-solid fa-arrow-right"></i>
-                </button>
+                <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                    <button class="btn-cta" style="margin-top:0;"
+                        onclick="document.getElementById('bestsellers').scrollIntoView({behavior:'smooth'})">
+                        ORDER NOW <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-primary"
+                        style="background: transparent; border: 1.5px solid var(--cta-bg); color: var(--cta-bg); margin-top:0;"
+                        onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
+                        VIEW FLAVOURS
+                    </button>
+                </div>
             </div>
             <div class="hero-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=750&h=750&fit=crop&q=90"
-                    alt="Be'Lovd Signature Brownie Cake" class="hero-main-img">
-                <div class="hero-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Category Icons -->
-        <div class="container">
-            <div class="category-strip">
-                <div class="cat-item active" onclick="filterCategory('cakes')">
-                    <div class="cat-icon-wrap">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3014/3014459.png" alt="Cakes">
-                    </div>
-                    <span>CAKES</span>
-                </div>
-                <div class="cat-item" onclick="filterCategory('cookies')">
-                    <div class="cat-icon-wrap">
-                        <img src="https://cdn-icons-png.flaticon.com/512/5663/5663789.png" alt="Cookies">
-                    </div>
-                    <span>COOKIES</span>
-                </div>
-                <div class="cat-item" onclick="filterCategory('savory')">
-                    <div class="cat-icon-wrap">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3014/3014502.png" alt="Sandwich">
-                    </div>
-                    <span>SANDWICH</span>
-                </div>
-                <div class="cat-item" onclick="filterCategory('breads')">
-                    <div class="cat-icon-wrap">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3014/3014496.png" alt="Bread">
-                    </div>
-                    <span>BREAD</span>
-                </div>
+                <img src="./assets/hero_brownie.png" alt="Be'Lovd Premium Fudgy Brownie"
+                    class="hero-main-img img-hover-zoom"
+                    style="border-radius: 12px; height: 500px; width: 100%; object-fit: cover;">
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="container about-grid">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=650&h=750&fit=crop&q=85"
-                    alt="Be'Lovd Artisan Bakery Interior" class="about-main-img">
-            </div>
-            <div class="about-content">
-                <div class="section-label">WELCOME</div>
-                <h2 class="section-title">About<br>Be'Lovd Bakery</h2>
-                <p class="section-desc">Be'Lovd opened its first location on a quiet street corner in the heart of
-                    Mumbai. From its inception, Be'Lovd has been cherished for its classic artisan baked goods, vintage
-                    decor and warm, inviting atmosphere. Learn more about the history of Be'Lovd Bakery.</p>
-                <button class="btn-cta" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
-                    GET DIRECTION <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hot Selling Section -->
-    <section class="hot-selling-section" id="hot-selling">
+    <!-- Featured Best Sellers -->
+    <section class="hot-selling-section" id="bestsellers" style="padding: 5rem 0; background: var(--bg);">
         <div class="container">
-            <div class="section-header-split">
-                <div>
-                    <div class="section-label">EXPLORE</div>
-                    <h2 class="section-title">Hot Selling Recipe</h2>
-                    <p class="section-desc">Be'Lovd opened its first location on a quiet street corner<br>in the heart
-                        of Mumbai's West Village.</p>
-                </div>
-                <div class="nav-arrows">
+            <div class="section-header" style="text-align:center;">
+                <div class="section-label" style="justify-content:center;">HOT & FRESH</div>
+                <h2 class="section-title">Our Bestsellers 🔥</h2>
+                <p class="section-desc" style="margin: 0 auto;">The most loved, gooey, and rich brownies baked fresh
+                    today.</p>
+                <div class="nav-arrows" style="justify-content: center; margin-top: 1.5rem;">
                     <button class="arrow-btn" id="hotPrev"><i class="fa-solid fa-chevron-left"></i></button>
                     <button class="arrow-btn" id="hotNext"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
@@ -169,260 +125,312 @@
 
             <div class="hot-scroll-wrap">
                 <div class="hot-products-row" id="hotProductsRow">
-                    <div class="hot-product-card" data-name="Rose Petal Cupcakes" data-price="499">
+                    <!-- Brownie 1 -->
+                    <div class="hot-product-card product-hover">
+                        <div class="badge-tag">Most Loved</div>
                         <div class="hot-img">
-                            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=450&h=380&fit=crop&q=85"
-                                alt="Rose Petal Cupcakes">
+                            <img src="./assets/signature_fudgy.png" alt="Signature Fudgy Brownie">
                         </div>
-                        <p class="hp-price">₹499</p>
-                        <p class="hp-name">ROSE CUPCAKES</p>
-                        <div class="hp-stars">★★★★★</div>
+                        <div class="hp-info">
+                            <p class="hp-name">SIGNATURE FUDGY</p>
+                            <p class="hp-hook">Rich. Gooey. Crowd Favorite.</p>
+                            <div class="hp-bottom">
+                                <p class="hp-price">₹299</p>
+                                <button class="quick-add-btn">ADD <i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="hot-product-card" data-name="Butter Croissant" data-price="349">
+                    <!-- Brownie 2 -->
+                    <div class="hot-product-card product-hover">
+                        <div class="badge-tag new-tag">New</div>
                         <div class="hot-img">
-                            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=450&h=380&fit=crop&q=85"
-                                alt="Butter Croissant">
+                            <img src="./assets/walnut_crunch.png" alt="Walnut Crunch Brownie">
                         </div>
-                        <p class="hp-price">₹349</p>
-                        <p class="hp-name">CROISSANT</p>
-                        <div class="hp-stars">★★★★★</div>
+                        <div class="hp-info">
+                            <p class="hp-name">WALNUT CRUNCH</p>
+                            <p class="hp-hook">Nutty texture with intense cocoa.</p>
+                            <div class="hp-bottom">
+                                <p class="hp-price">₹349</p>
+                                <button class="quick-add-btn">ADD <i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="hot-product-card" data-name="Lavender Drip Cake" data-price="1299">
+                    <!-- Brownie 3 -->
+                    <div class="hot-product-card product-hover">
+                        <div class="badge-tag">Limited Batch</div>
                         <div class="hot-img">
-                            <img src="https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=450&h=380&fit=crop&q=85"
-                                alt="Lavender Drip Cake">
+                            <img src="./assets/salted_caramel.png" alt="Salted Caramel Swirl">
                         </div>
-                        <p class="hp-price">₹1,299</p>
-                        <p class="hp-name">DRIP CAKE</p>
-                        <div class="hp-stars">★★★★★</div>
+                        <div class="hp-info">
+                            <p class="hp-name">SALTED CARAMEL</p>
+                            <p class="hp-hook">Sweet & salty perfection.</p>
+                            <div class="hp-bottom">
+                                <p class="hp-price">₹399</p>
+                                <button class="quick-add-btn">ADD <i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="hot-product-card" data-name="Fresh Berry Tart" data-price="799">
+                    <!-- Brownie 4 -->
+                    <div class="hot-product-card product-hover">
                         <div class="hot-img">
-                            <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=450&h=380&fit=crop&q=85"
-                                alt="Fresh Berry Tart">
+                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=450&h=380&fit=crop"
+                                alt="Triple Chocolate Chunk">
                         </div>
-                        <p class="hp-price">₹799</p>
-                        <p class="hp-name">BERRY TART</p>
-                        <div class="hp-stars">★★★★☆</div>
-                    </div>
-                    <div class="hot-product-card" data-name="French Macarons" data-price="899">
-                        <div class="hot-img">
-                            <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=450&h=380&fit=crop&q=85"
-                                alt="French Macarons">
+                        <div class="hp-info">
+                            <p class="hp-name">TRIPLE CHOCO</p>
+                            <p class="hp-hook">White, milk, and dark chunks.</p>
+                            <div class="hp-bottom">
+                                <p class="hp-price">₹349</p>
+                                <button class="quick-add-btn">ADD <i class="fa-solid fa-plus"></i></button>
+                            </div>
                         </div>
-                        <p class="hp-price">₹899</p>
-                        <p class="hp-name">MACARONS</p>
-                        <div class="hp-stars">★★★★★</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Full Menu Section -->
-    <section class="menu-section" id="menu">
+    <!-- Special Offers / Combo Boxes -->
+    <section class="combo-section" id="gifting" style="padding: 5rem 0; background: var(--white);">
         <div class="container">
             <div class="section-header" style="text-align:center;">
-                <div class="section-label" style="justify-content:center;">SEE</div>
-                <h2 class="section-title">Our Menu</h2>
+                <div class="section-label" style="justify-content:center;">BUNDLES</div>
+                <h2 class="section-title">Perfect for Gifting & Celebrations</h2>
             </div>
-
-            <ul class="menu-tabs" id="menuTabs">
-                <li class="menu-tab active" data-tab="all">CAKES</li>
-                <li class="menu-tab" data-tab="cookies">COOKIES</li>
-                <li class="menu-tab" data-tab="breads">BREADS</li>
-                <li class="menu-tab" data-tab="donuts">DONUTS</li>
-                <li class="menu-tab" data-tab="toast">TOAST</li>
-            </ul>
-
-            <div class="menu-grid" id="menuGrid">
-                <!-- Row 1 -->
-                <div class="menu-card" data-name="Rose Petal Cupcakes" data-price="499">
-                    <div class="menu-img">
-                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=420&h=360&fit=crop&q=85"
-                            alt="Rose Petal Cupcakes">
+            <div class="combo-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <!-- Box 1 -->
+                <div class="combo-card product-hover"
+                    style="background: var(--bg); border-radius: 12px; overflow: hidden; position: relative; border: 1px solid var(--border);">
+                    <div class="badge-tag gift-tag">Best for Gifting</div>
+                    <img src="./assets/assorted_gift_box.png" style="height: 240px; width: 100%; object-fit: cover;"
+                        alt="Assorted Gift Box">
+                    <div class="combo-info" style="padding: 1.5rem;">
+                        <h3 class="hp-name" style="font-size: 1.15rem; margin-bottom: 0.5rem;">Assorted Gift Box of 6
+                        </h3>
+                        <p class="hp-hook" style="margin-bottom: 1.2rem; color: var(--text-muted); font-size: 0.9rem;">
+                            Pick any 6 flavours for a perfect premium gift experience.</p>
+                        <div class="hp-bottom"
+                            style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span
+                                    style="text-decoration: line-through; color: var(--text-muted); font-size: 0.85rem;">₹2,094</span>
+                                <span class="hp-price" style="margin-left: 0.5rem; font-size: 1.1rem;">₹1,799</span>
+                            </div>
+                            <button class="quick-add-btn" style="padding: 0.5rem 1rem;">ADD TO CART</button>
+                        </div>
                     </div>
-                    <p class="mc-price">₹499</p>
-                    <p class="mc-name">ROSE CUPCAKES</p>
-                    <div class="mc-stars">★★★★★</div>
                 </div>
-                <div class="menu-card" data-name="Lavender Drip Cake" data-price="1299">
-                    <div class="menu-img">
-                        <img src="https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=420&h=360&fit=crop&q=85"
-                            alt="Lavender Drip Cake">
+                <!-- Box 2 -->
+                <div class="combo-card product-hover"
+                    style="background: var(--bg); border-radius: 12px; overflow: hidden; position: relative; border: 1px solid var(--border);">
+                    <div class="badge-tag gift-tag">Party Saver</div>
+                    <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=600&h=450&fit=crop"
+                        style="height: 240px; width: 100%; object-fit: cover;" alt="Brownie Party Platter">
+                    <div class="combo-info" style="padding: 1.5rem;">
+                        <h3 class="hp-name" style="font-size: 1.15rem; margin-bottom: 0.5rem;">Classic Party Platter (12
+                            pcs)</h3>
+                        <p class="hp-hook" style="margin-bottom: 1.2rem; color: var(--text-muted); font-size: 0.9rem;">A
+                            dozen of our classic fudgy brownies for your celebrations.</p>
+                        <div class="hp-bottom"
+                            style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span
+                                    style="text-decoration: line-through; color: var(--text-muted); font-size: 0.85rem;">₹3,588</span>
+                                <span class="hp-price" style="margin-left: 0.5rem; font-size: 1.1rem;">₹2,999</span>
+                            </div>
+                            <button class="quick-add-btn" style="padding: 0.5rem 1rem;">ADD TO CART</button>
+                        </div>
                     </div>
-                    <p class="mc-price">₹1,299</p>
-                    <p class="mc-name">DRIP CAKE</p>
-                    <div class="mc-stars">★★★★★</div>
-                </div>
-                <div class="menu-card" data-name="Fresh Berry Tart" data-price="799">
-                    <div class="menu-img">
-                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=420&h=360&fit=crop&q=85"
-                            alt="Fresh Berry Tart">
-                    </div>
-                    <p class="mc-price">₹799</p>
-                    <p class="mc-name">BERRY TART</p>
-                    <div class="mc-stars">★★★★★</div>
-                </div>
-                <div class="menu-card" data-name="Pink Vanilla Cake" data-price="999">
-                    <div class="menu-img">
-                        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=420&h=360&fit=crop&q=85"
-                            alt="Pink Vanilla Cake">
-                    </div>
-                    <p class="mc-price">₹999</p>
-                    <p class="mc-name">VANILLA CAKE</p>
-                    <div class="mc-stars">★★★★★</div>
-                </div>
-                <!-- Row 2 -->
-                <div class="menu-card" data-name="Tiramisu Slice" data-price="599">
-                    <div class="menu-img">
-                        <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=420&h=360&fit=crop&q=85"
-                            alt="Tiramisu Slice">
-                    </div>
-                    <p class="mc-price">₹599</p>
-                    <p class="mc-name">TIRAMISU</p>
-                    <div class="mc-stars">★★★★★</div>
-                </div>
-                <div class="menu-card" data-name="French Macarons" data-price="899">
-                    <div class="menu-img">
-                        <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=420&h=360&fit=crop&q=85"
-                            alt="French Macarons">
-                    </div>
-                    <p class="mc-price">₹899</p>
-                    <p class="mc-name">MACARONS</p>
-                    <div class="mc-stars">★★★★☆</div>
-                </div>
-                <div class="menu-card" data-name="Chocolate Truffle Cake" data-price="1099">
-                    <div class="menu-img">
-                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=420&h=360&fit=crop&q=85"
-                            alt="Chocolate Truffle Cake">
-                    </div>
-                    <p class="mc-price">₹1,099</p>
-                    <p class="mc-name">CHOCO TRUFFLE</p>
-                    <div class="mc-stars">★★★★★</div>
-                </div>
-                <div class="menu-card" data-name="Strawberry Shortcake" data-price="749">
-                    <div class="menu-img">
-                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=420&h=360&fit=crop&q=85"
-                            alt="Strawberry Shortcake">
-                    </div>
-                    <p class="mc-price">₹749</p>
-                    <p class="mc-name">SHORTCAKE</p>
-                    <div class="mc-stars">★★★★★</div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Pagination -->
-            <div class="pagination">
-                <span class="page-num active">1</span>
-                <span class="page-num">2</span>
-                <span class="page-num">3</span>
-                <span class="page-num">4</span>
-                <span class="page-num">5</span>
-                <span class="page-num">6</span>
-                <span class="page-num">7</span>
-                <button class="page-arrow"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="page-arrow active-arrow"><i class="fa-solid fa-chevron-right"></i></button>
+    <!-- Full Collection Section -->
+    <section class="menu-section" id="menu" style="background: var(--bg); padding: 5rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align:center;">
+                <div class="section-label" style="justify-content:center;">OUR COLLECTION</div>
+                <h2 class="section-title">Explore All Flavours</h2>
+            </div>
+
+            <div class="menu-grid" id="menuGrid" style="margin-top: 3rem;">
+                <!-- Product 1 -->
+                <div class="menu-card product-hover">
+                    <div class="menu-img">
+                        <img src="./assets/signature_fudgy.png" alt="Signature Fudgy Brownie">
+                    </div>
+                    <div class="mc-info" style="padding: 1.2rem; text-align: left;">
+                        <p class="hp-name">SIGNATURE FUDGY</p>
+                        <p class="hp-hook" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem;">
+                            Rich cocoa and melted dark chocolate.</p>
+                        <div style="display:flex; justify-content: space-between; align-items: center;">
+                            <p class="hp-price" style="margin:0;">₹299</p>
+                            <button class="menu-add-btn"
+                                style="background:none; border:none; color:var(--cta-bg); font-weight:700; cursor:pointer;"><i
+                                    class="fa-solid fa-plus"></i> ADD</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="menu-card product-hover">
+                    <div class="menu-img">
+                        <img src="./assets/walnut_crunch.png" alt="Walnut Crunch Brownie">
+                    </div>
+                    <div class="mc-info" style="padding: 1.2rem; text-align: left;">
+                        <p class="hp-name">WALNUT CRUNCH</p>
+                        <p class="hp-hook" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem;">
+                            Loaded with roasted premium walnuts.</p>
+                        <div style="display:flex; justify-content: space-between; align-items: center;">
+                            <p class="hp-price" style="margin:0;">₹349</p>
+                            <button class="menu-add-btn"
+                                style="background:none; border:none; color:var(--cta-bg); font-weight:700; cursor:pointer;"><i
+                                    class="fa-solid fa-plus"></i> ADD</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="menu-card product-hover">
+                    <div class="menu-img">
+                        <img src="./assets/salted_caramel.png" alt="Salted Caramel Swirl">
+                    </div>
+                    <div class="mc-info" style="padding: 1.2rem; text-align: left;">
+                        <p class="hp-name">SALTED CARAMEL</p>
+                        <p class="hp-hook" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem;">
+                            House-made caramel with delicate sea salt.</p>
+                        <div style="display:flex; justify-content: space-between; align-items: center;">
+                            <p class="hp-price" style="margin:0;">₹399</p>
+                            <button class="menu-add-btn"
+                                style="background:none; border:none; color:var(--cta-bg); font-weight:700; cursor:pointer;"><i
+                                    class="fa-solid fa-plus"></i> ADD</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="menu-card product-hover">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=420&h=360&fit=crop"
+                            alt="Triple Chocolate Chunk">
+                    </div>
+                    <div class="mc-info" style="padding: 1.2rem; text-align: left;">
+                        <p class="hp-name">TRIPLE CHOCO</p>
+                        <p class="hp-hook" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem;">
+                            White, milk, and 70% dark chunks.</p>
+                        <div style="display:flex; justify-content: space-between; align-items: center;">
+                            <p class="hp-price" style="margin:0;">₹349</p>
+                            <button class="menu-add-btn"
+                                style="background:none; border:none; color:var(--cta-bg); font-weight:700; cursor:pointer;"><i
+                                    class="fa-solid fa-plus"></i> ADD</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 5 -->
+                <div class="menu-card product-hover">
+                    <div class="menu-img">
+                        <img src="./assets/peanut_butter.png" alt="Peanut Butter Swirl">
+                    </div>
+                    <div class="mc-info" style="padding: 1.2rem; text-align: left;">
+                        <p class="hp-name">PEANUT BUTTER</p>
+                        <p class="hp-hook" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem;">
+                            Creamy peanut butter marbling.</p>
+                        <div style="display:flex; justify-content: space-between; align-items: center;">
+                            <p class="hp-price" style="margin:0;">₹349</p>
+                            <button class="menu-add-btn"
+                                style="background:none; border:none; color:var(--cta-bg); font-weight:700; cursor:pointer;"><i
+                                    class="fa-solid fa-plus"></i> ADD</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 6 -->
+                <div class="menu-card product-hover">
+                    <div class="menu-img">
+                        <img src="./assets/vegan_dark_fudge.png" alt="Vegan Dark Fudge">
+                    </div>
+                    <div class="mc-info" style="padding: 1.2rem; text-align: left;">
+                        <p class="hp-name">VEGAN DARK FUDGE</p>
+                        <p class="hp-hook" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem;">
+                            100% plant-based, deeply fudgy.</p>
+                        <div style="display:flex; justify-content: space-between; align-items: center;">
+                            <p class="hp-price" style="margin:0;">₹399</p>
+                            <button class="menu-add-btn"
+                                style="background:none; border:none; color:var(--cta-bg); font-weight:700; cursor:pointer;"><i
+                                    class="fa-solid fa-plus"></i> ADD</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Our Brownies (Trust Builder) -->
+    <section class="trust-section" id="why-us"
+        style="padding: 5rem 0; background: var(--white); border-top: 1px solid var(--border);">
+        <div class="container text-center" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="section-label" style="justify-content:center;">OUR PROMISE</div>
+            <h2 class="section-title">Why Choose Our Brownies</h2>
+            <div class="trust-grid"
+                style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; margin-top: 4rem; max-width: 900px; width: 100%;">
+                <div class="trust-card" style="text-align: center;">
+                    <i class="fa-solid fa-fire-burner trust-icon"
+                        style="font-size: 2.2rem; color: var(--cta-bg); margin-bottom: 1.2rem;"></i>
+                    <h4 style="margin-bottom: 0.5rem; font-family: var(--font-heading);">Freshly Baked Daily</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">Small batches baked every morning from scratch.</p>
+                </div>
+                <div class="trust-card" style="text-align: center;">
+                    <i class="fa-solid fa-leaf trust-icon"
+                        style="font-size: 2.2rem; color: var(--cta-bg); margin-bottom: 1.2rem;"></i>
+                    <h4 style="margin-bottom: 0.5rem; font-family: var(--font-heading);">Premium Ingredients</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">100% pure cocoa and real butter craft.</p>
+                </div>
+                <div class="trust-card" style="text-align: center;">
+                    <i class="fa-solid fa-ban trust-icon"
+                        style="font-size: 2.2rem; color: var(--cta-bg); margin-bottom: 1.2rem;"></i>
+                    <h4 style="margin-bottom: 0.5rem; font-family: var(--font-heading);">No Preservatives</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">Clean, natural goodness in every single bite.</p>
+                </div>
+                <div class="trust-card" style="text-align: center;">
+                    <i class="fa-solid fa-truck-fast trust-icon"
+                        style="font-size: 2.2rem; color: var(--cta-bg); margin-bottom: 1.2rem;"></i>
+                    <h4 style="margin-bottom: 0.5rem; font-family: var(--font-heading);">Same Day Dispatch</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">Delivered fresh and fast to your doorstep.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonial Section -->
-    <section class="testimonial-section" id="testimonials">
-        <div class="container testimonial-grid">
-            <div class="testimonial-left">
-                <div class="section-label">TESTIMONIAL</div>
-                <h2 class="section-title">Hear From<br>Our Customers</h2>
-                <p class="section-desc">Be'Lovd opened its first location on a quiet street corner in the heart of
-                    Mumbai's West Village.</p>
-                <div class="test-arrows">
-                    <button class="arrow-btn" id="testPrev"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="arrow-btn" id="testNext"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
-                <div class="testimonial-video">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=650&h=480&fit=crop&q=85"
-                        alt="Be'Lovd Customer Experience">
-                    <button class="play-btn" onclick="this.parentElement.querySelector('img').style.opacity='0.5'">
-                        <i class="fa-solid fa-play"></i>
-                    </button>
-                </div>
+    <section class="testimonial-section" id="testimonials" style="padding: 6rem 0; background: var(--bg);">
+        <div class="container"
+            style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3rem;">
+            <div class="testimonial-left" style="max-width: 600px; margin: 0 auto;">
+                <div class="section-label" style="justify-content:center;">REVIEWS</div>
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-desc" style="margin: 0 auto;">Don't just take our word for it. Our brownies are loved
+                    by thousands across the country.</p>
             </div>
-            <div class="testimonial-right">
-                <div class="quote-card">
-                    <p class="quote-text">
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. quis nostrud exercitatio consequat.exercitation
-                        ullamco."
+
+            <div class="testimonial-right" style="width: 100%; max-width: 700px; margin: 0 auto;">
+                <div class="quote-card"
+                    style="background: var(--white); padding: 3rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: left;">
+                    <div class="quote-stars"
+                        style="color: #f4a818; margin-bottom: 1.5rem; font-size: 1.2rem; letter-spacing: 2px;">★★★★★
+                    </div>
+                    <p class="quote-text"
+                        style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem; font-style: italic;">
+                        "Honestly the most decadent brownies I've ever tasted. The salted caramel swirl is to die for!
+                        The edges are perfectly chewy and the center is gooey and rich. I order a box every week!"
                     </p>
-                    <div class="quote-author">
+                    <div class="quote-author" style="display: flex; align-items: center; gap: 1rem;">
                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&q=85"
-                            alt="Priya Mehta">
+                            alt="Priya Mehta" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
                         <div>
-                            <h4>Aditi Sharma</h4>
-                            <span>CEO & Founder at Cake Corporation</span>
+                            <h4 style="font-size: 1rem;">Priya Mehta</h4>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">Verified Buyer</span>
                         </div>
                     </div>
                 </div>
-                <div class="test-counter">
-                    <span class="test-num">1</span><span class="test-total">/10</span>
-                    <div class="test-progress">
-                        <div class="test-fill"></div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section class="booking-section" id="reservations">
-        <div class="container">
-            <div class="booking-header">
-                <div class="section-label" style="justify-content:center;">BOOKING</div>
-                <h2 class="section-title">Book a Reservation</h2>
-                <p class="section-desc" style="text-align:center; margin:0 auto;">Be'Lovd opened its first location on
-                    a quiet street corner in the heart of New York.</p>
-            </div>
-            <form class="booking-form" onsubmit="event.preventDefault(); alert('Reservation submitted!');">
-                <div class="form-row">
-                    <div class="form-group">
-                        <i class="fa-regular fa-user"></i>
-                        <input type="text" placeholder="Name" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fa-regular fa-envelope"></i>
-                        <input type="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fa-solid fa-phone"></i>
-                        <input type="tel" placeholder="Phone" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <i class="fa-regular fa-calendar"></i>
-                        <input type="date" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fa-regular fa-clock"></i>
-                        <input type="time" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fa-solid fa-users"></i>
-                        <input type="number" placeholder="Guests" min="1" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group full-width">
-                        <i class="fa-regular fa-message"></i>
-                        <textarea placeholder="Message" rows="4"></textarea>
-                    </div>
-                </div>
-                <div style="text-align:center; margin-top:1rem;">
-                    <button type="submit" class="btn-cta">CHECK AVAILABILITY <i
-                            class="fa-solid fa-arrow-right"></i></button>
-                </div>
-            </form>
         </div>
     </section>
 
@@ -493,48 +501,42 @@
             document.getElementById('cartOverlay').classList.toggle('show');
         }
 
-        // Menu tabs
-        document.querySelectorAll('.menu-tab').forEach(tab => {
-            tab.addEventListener('click', function () {
-                document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Category strip
-        document.querySelectorAll('.cat-item').forEach(item => {
-            item.addEventListener('click', function () {
-                document.querySelectorAll('.cat-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
         // Hot selling scroll arrows
         const row = document.getElementById('hotProductsRow');
-        document.getElementById('hotNext').addEventListener('click', () => {
-            row.scrollBy({ left: 300, behavior: 'smooth' });
-        });
-        document.getElementById('hotPrev').addEventListener('click', () => {
-            row.scrollBy({ left: -300, behavior: 'smooth' });
-        });
-
-        // Add to cart for menu & hot sell cards
-        document.querySelectorAll('.menu-card, .hot-product-card').forEach(card => {
-            card.addEventListener('click', function () {
-                const name = this.dataset.name;
-                const price = parseInt(this.dataset.price);
-                if (name && price) addToCart(name, price);
+        if (row) {
+            document.getElementById('hotNext').addEventListener('click', () => {
+                row.scrollBy({ left: 300, behavior: 'smooth' });
             });
-        });
+            document.getElementById('hotPrev').addEventListener('click', () => {
+                row.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+        }
 
-        // Pagination (visual only)
-        document.querySelectorAll('.page-num').forEach(p => {
-            p.addEventListener('click', function () {
-                document.querySelectorAll('.page-num').forEach(n => n.classList.remove('active'));
-                this.classList.add('active');
+        // Quick add to cart for brownie cards
+        document.querySelectorAll('.hot-product-card, .menu-card, .combo-card').forEach(card => {
+            card.addEventListener('click', function (e) {
+                if (e.target.closest('button')) {
+                    const titleEl = this.querySelector('.hp-name') || this.querySelector('.combo-title');
+                    const priceEl = this.querySelector('.hp-price');
+                    if (titleEl && priceEl) {
+                        const name = titleEl.innerText;
+                        const price = parseInt(priceEl.innerText.replace('₹', '').replace(',', ''));
+                        addToCart(name, price);
+                    }
+                }
             });
         });
     </script>
+
+    <!-- Mobile Sticky Bottom Bar -->
+    <div class="mobile-bottom-bar">
+        <a href="#home" class="m-nav-item active"><i class="fa-solid fa-house"></i><span>Home</span></a>
+        <a href="#menu" class="m-nav-item"><i class="fa-solid fa-store"></i><span>Shop</span></a>
+        <a href="https://wa.me/919750070001" class="m-nav-item whatsapp" target="_blank"><i
+                class="fa-brands fa-whatsapp"></i><span>Order</span></a>
+        <a href="javascript:void(0)" class="m-nav-item" onclick="toggleCart()"><i
+                class="fa-solid fa-bag-shopping"></i><span>Cart</span></a>
+    </div>
 </body>
 
 </html>
