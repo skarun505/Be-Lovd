@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Be'Lovd</title>
+    <title>About Us - Be'Loved</title>
+    <!-- Favicon & PWA -->
+    <link rel="icon" type="image/png" href="assets/beloved_logo.png">
+    <link rel="apple-touch-icon" href="assets/beloved_logo.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#431C1A">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -19,7 +25,9 @@
     <!-- Navigation -->
     <nav class="navbar scrolled">
         <div class="container nav-container">
-            <a href="index.html" class="logo">BE'LOVD.</a>
+            <a href="index.html" class="logo">
+                <img src="assets/beloved_logo.png" alt="Be'Loved" style="height: 40px; width: auto; display: block;">
+            </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html#home" class="nav-link">Home</a></li>
                 <li><a href="index.html#bestsellers" class="nav-link">Bestsellers</a></li>
@@ -47,7 +55,7 @@
     <section class="about-section" id="about" style="padding-top: 8rem; padding-bottom: 4rem;">
         <div class="container">
             <div class="page-header" style="text-align: center; margin-bottom: 4rem;">
-                <h1 class="section-title">About Be'Lovd</h1>
+                <h1 class="section-title">About Be'Loved</h1>
                 <p class="section-subtitle">Baking Love Into Every Cake Since 2020</p>
             </div>
 
@@ -55,7 +63,7 @@
                 style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
                 <div class="about-text">
                     <h2 class="section-title" style="text-align: left; font-size: 2.5rem;">Our Story</h2>
-                    <p>Be'Lovd was born from a simple belief that every celebration deserves a cake that's as special as
+                    <p>Be'Loved was born from a simple belief that every celebration deserves a cake that's as special as
                         the occasion itself. Since 2020, we've been crafting premium cakes that celebrate life's
                         sweetest moments.</p>
 
@@ -84,7 +92,7 @@
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600&h=700&fit=crop&q=85"
-                        alt="About Be'Lovd" loading="lazy"
+                        alt="About Be'Loved" loading="lazy"
                         style="width: 100%; border-radius: 12px; box-shadow: var(--shadow-md);">
                 </div>
             </div>
@@ -95,7 +103,10 @@
     <footer class="footer" id="contact">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <h3 class="logo">BE'LOVD.</h3>
+                <a href="index.html" class="footer-logo">
+                    <img src="assets/beloved_logo.png" alt="Be'Loved"
+                        style="height: 60px; width: auto; margin-bottom: 1.5rem; display: block;">
+                </a>
                 <p>Curating luxury baking experiences across India. Every bite is a memory in the making.</p>
                 <div class="social-links">
                     <a href="https://instagram.com/belovd_official" target="_blank" aria-label="Instagram"><i
@@ -134,7 +145,7 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2026 Be'Lovd Patisserie India. Handcrafted Excellence.</p>
+                <p>&copy; 2026 Be'Loved Patisserie India. Handcrafted Excellence.</p>
             </div>
         </div>
     </footer>

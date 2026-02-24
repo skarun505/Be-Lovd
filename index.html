@@ -4,9 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be'Lovd - Premium Bakery & Patisserie | Handcrafted with Love</title>
+    <title>Be'Loved - Premium Bakery & Patisserie | Handcrafted with Love</title>
     <meta name="description"
-        content="Experience the finest artisanal cakes and pastries at Be'Lovd. Freshly baked daily using premium ingredients. Order online for same-day delivery.">
+        content="Experience the finest artisanal cakes and pastries at Be'Loved. Freshly baked daily using premium ingredients. Order online for same-day delivery.">
+
+    <!-- Favicon & PWA -->
+    <link rel="icon" type="image/png" href="assets/beloved_logo.png">
+    <link rel="apple-touch-icon" href="assets/beloved_logo.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#431C1A">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +56,9 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">BE'LOVD.</a>
+            <a href="index.html" class="logo">
+                <img src="assets/beloved_logo.png" alt="Be'Loved" style="height: 45px; width: auto; display: block;">
+            </a>
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link">Home</a></li>
@@ -102,7 +110,7 @@
                 </div>
             </div>
             <div class="hero-image-wrapper">
-                <img src="./assets/hero_brownie.png" alt="Be'Lovd Premium Fudgy Brownie"
+                <img src="./assets/hero_brownie.png" alt="Be'Loved Premium Fudgy Brownie"
                     class="hero-main-img img-hover-zoom"
                     style="border-radius: 12px; height: 500px; width: 100%; object-fit: cover;">
             </div>
@@ -438,7 +446,10 @@
     <footer class="footer" id="contact">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <h3 class="logo">BE'LOVD.</h3>
+                <a href="index.html" class="footer-logo">
+                    <img src="assets/beloved_logo.png" alt="Be'Loved"
+                        style="height: 60px; width: auto; margin-bottom: 1.5rem; display: block;">
+                </a>
                 <p>Curating luxury baking experiences across India. Every bite is a memory in the making.</p>
                 <div class="social-links">
                     <a href="https://instagram.com/belovd_official" target="_blank" aria-label="Instagram"><i
@@ -480,7 +491,7 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2026 Be'Lovd Patisserie India. Handcrafted Excellence.</p>
+                <p>&copy; 2026 Be'Loved Patisserie India. Handcrafted Excellence.</p>
             </div>
         </div>
     </footer>
