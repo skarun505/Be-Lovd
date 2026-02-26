@@ -91,41 +91,28 @@ function updateCartUI() {
     }
 }
 
-function showNotification(message) {
-    const existing = document.querySelector('.toast-notification');
-    if (existing) existing.remove();
+function showNotification(message, iconClass = 'fa-check-circle') {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        document.body.appendChild(container);
+    }
 
     const toast = document.createElement('div');
-    toast.className = 'toast-notification';
-    toast.innerHTML = `<i class="fa-solid fa-check-circle"></i> <span>${message}</span>`;
-    Object.assign(toast.style, {
-        position: 'fixed',
-        bottom: '30px',
-        right: '30px',
-        background: '#431C1A',
-        color: 'white',
-        padding: '0.9rem 1.8rem',
-        borderRadius: '8px',
-        zIndex: '10002',
-        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-        fontFamily: 'Inter, sans-serif',
-        fontSize: '0.88rem',
-        fontWeight: '600',
-        transform: 'translateY(100px)',
-        opacity: '0',
-        transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-    });
+    toast.className = 'custom-toast';
+    // Use innerHTML properly dealing with newlines from alert strings
+    const formattedMessage = message.replace(/\n/g, '<br>');
+    toast.innerHTML = `<i class="fa-solid ${iconClass}"></i> <div>${formattedMessage}</div>`;
 
-    document.body.appendChild(toast);
-    setTimeout(() => { toast.style.transform = 'translateY(0)'; toast.style.opacity = '1'; }, 100);
+    container.appendChild(toast);
+
+    // Auto remove after animation completes (3.4s defined in CSS)
     setTimeout(() => {
-        toast.style.transform = 'translateY(100px)';
-        toast.style.opacity = '0';
-        setTimeout(() => toast.remove(), 500);
-    }, 3000);
+        if (toast.parentElement) {
+            toast.remove();
+        }
+    }, 3500);
 }
 
 function filterCategory(cat) {
@@ -145,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             if (cart.length === 0) { showNotification('Your cart is empty!'); return; }
-            alert("Proceeding to checkout...\n\nThank you for choosing Be'Lovd.");
+            showNotification("Proceeding to checkout...<br><span style='font-size:0.8rem; opacity:0.8;'>Thank you for choosing Be'Lovd.</span>", "fa-bag-shopping");
             cart = []; saveCart(); updateCartUI(); toggleCart();
         });
     }
@@ -169,6 +156,18 @@ document.addEventListener('DOMContentLoaded', () => {
             addToCart(name, price, img);
         });
     });
+
+    // Product detail add to cart
+    const detailAddBtn = document.querySelector('.product-add-btn');
+    if (detailAddBtn) {
+        detailAddBtn.addEventListener('click', () => {
+            const name = detailAddBtn.dataset.name;
+            const price = detailAddBtn.dataset.price;
+            const img = detailAddBtn.dataset.img;
+            addToCart(name, price, img);
+            toggleCart(); // Option to open the cart when they add the item!
+        });
+    }
 });
 
 // Register Service Worker
