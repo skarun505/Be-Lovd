@@ -1442,30 +1442,61 @@ img {
     }
 
     .hot-products-row {
-        justify-content: flex-start;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding-left: 0;
+        padding-right: 0;
+        overflow-x: visible;
     }
 
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .cart-sidebar,
-    .account-sidebar {
+    .hot-product-card {
+        min-width: unset;
         width: 100%;
-        right: -100%;
+    }
+
+    .hot-scroll-wrap {
+        overflow-x: visible;
+    }
+
+    .nav-arrows {
+        display: none !important;
     }
 }
 
 @media (max-width: 480px) {
     .menu-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .combo-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .combo-card img {
+        height: 180px !important;
+    }
+
+    .hp-info {
+        padding: 0.8rem;
+    }
+
+    .hp-name {
+        font-size: 0.8rem !important;
+    }
+
+    .hp-hook {
+        display: none;
+    }
+
+    .hp-price {
+        font-size: 0.9rem !important;
+    }
+
+    .quick-add-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
     }
 
     .hero-grid {
@@ -1490,6 +1521,40 @@ img {
     .promise-card {
         padding: 2.5rem 1.5rem !important;
     }
+}
+
+/* Infinite Scroll for Testimonials */
+.testimonial-scroll-wrap {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0;
+}
+
+.testimonial-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+}
+
+.testimonial-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 1rem));
+    }
+}
+
+.testimonial-grid {
+    display: flex !important;
+    grid-template-columns: none !important;
 }
 
 /* ===== NEW REDESIGN STYLES ===== */
@@ -1600,13 +1665,23 @@ img {
 /* Custom Toast Notifications */
 #toast-container {
     position: fixed;
-    top: 20px;
+    bottom: 80px;
+    /* Changed from top: 20px for mobile bottom bar compliance */
     right: 20px;
     z-index: 10000;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    /* Notifications stack up */
     gap: 10px;
     pointer-events: none;
+}
+
+@media (min-width: 769px) {
+    #toast-container {
+        top: 20px;
+        bottom: auto;
+        flex-direction: column;
+    }
 }
 
 .custom-toast {
@@ -1765,9 +1840,20 @@ img {
     }
 
     .hero-section {
-        padding-top: 8rem;
+        padding-top: 5rem;
         padding-bottom: 4rem;
         text-align: center;
+    }
+
+    .nav-icon-btn,
+    .cart-icon-btn {
+        display: none;
+        /* Hidden on mobile to avoid duplicative nav */
+    }
+
+    .hot-product-card {
+        flex: 0 0 80vw;
+        /* Swipe cue for mobile */
     }
 
     .hero-content {
@@ -1790,5 +1876,17 @@ img {
 
     .section-title {
         font-size: 2rem !important;
+    }
+
+    .menu-mini-card:active {
+        transform: scale(0.95);
+    }
+
+    .menu-sidebar .cart-header h2 {
+        font-size: 1.5rem;
+        background: linear-gradient(135deg, var(--plum), var(--cta-bg));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }

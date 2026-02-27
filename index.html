@@ -36,6 +36,15 @@
             <h2>Your Cart</h2>
             <button class="close-cart" id="closeCart"><i class="fa-solid fa-xmark"></i></button>
         </div>
+        <div class="free-delivery-banner" id="freeDeliveryBanner"
+            style="padding: 1rem 2rem; background: #fdf2f2; border-bottom: 1px solid var(--border); font-size: 0.85rem; text-align: center;">
+            <p style="margin-bottom: 0.5rem; color: var(--plum); font-weight: 600;">Add <span
+                    id="amountToFree">₹999</span> more for <span style="color: #c15e39;">Free Delivery!</span></p>
+            <div style="width: 100%; height: 6px; background: #e0e0e0; border-radius: 10px; overflow: hidden;">
+                <div id="deliveryProgress"
+                    style="width: 0%; height: 100%; background: #c15e39; transition: width 0.3s ease;"></div>
+            </div>
+        </div>
         <div class="cart-items" id="cartItems">
             <div class="empty-cart">
                 <i class="fa-solid fa-cookie-bite"></i>
@@ -51,7 +60,8 @@
             <button class="checkout-btn" id="checkoutBtn">SECURE CHECKOUT <i class="fa-solid fa-lock"></i></button>
         </div>
     </div>
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart(); toggleAccount(false);"></div>
+    <div class="cart-overlay" id="cartOverlay"
+        onclick="toggleCart(false); toggleAccount(false); toggleMenuSidebar(false);"></div>
 
     <!-- Account Sidebar -->
     <div class="cart-sidebar account-sidebar" id="accountSidebar">
@@ -60,60 +70,199 @@
             <button class="close-cart" id="closeAccount" onclick="toggleAccount()"><i
                     class="fa-solid fa-xmark"></i></button>
         </div>
-        <div class="cart-items" style="padding: 2rem;">
-            <!-- Profile Info -->
-            <div class="account-section" style="margin-bottom: 2.5rem;">
-                <h4
-                    style="font-family: var(--font-heading); color: var(--plum); margin-bottom: 1.2rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fa-solid fa-user-circle"></i> Profile Details
-                </h4>
-                <div style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.9rem;">
-                    <div style="display: flex; justify-content: space-between;"><span
-                            style="color: var(--text-muted);">Name:</span> <strong id="accName">Altaf Ahmad</strong>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;"><span
-                            style="color: var(--text-muted);">Mobile:</span> <strong id="accMobile">+91 98765
-                            43210</strong></div>
-                    <div style="display: flex; justify-content: space-between;"><span
-                            style="color: var(--text-muted);">Email:</span> <strong
-                            id="accEmail">altaf@example.com</strong></div>
-                    <div style="display: flex; flex-direction: column; gap: 0.3rem;"><span
-                            style="color: var(--text-muted);">Address:</span> <strong id="accAddress"
-                            style="line-height: 1.4;">Flat 402, Green Meadows, Bandra West, Mumbai - 400050</strong>
-                    </div>
+        <div class="cart-items"
+            style="padding: 2rem; display: flex; flex-direction: column; justify-content: center; text-align: center; height: 100%;">
+            <!-- Logged out state by default -->
+            <div id="loggedOutState">
+                <div style="font-size: 4rem; color: var(--lavender-dark); margin-bottom: 1.5rem;">
+                    <i class="fa-regular fa-user-circle"></i>
                 </div>
+                <h3
+                    style="font-family: var(--font-heading); color: var(--plum); font-size: 1.8rem; margin-bottom: 0.5rem;">
+                    Welcome Back</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">Log in to access your order
+                    history and manage your preferences.</p>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <button class="btn-primary" style="width: 100%; justify-content: center; padding: 1rem;"
+                        onclick="showNotification('Supabase integration coming soon!', 'fa-bolt')">
+                        LOGIN WITH OTP <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-primary"
+                        style="width: 100%; justify-content: center; padding: 1rem; background: transparent; border: 2px solid var(--border); color: var(--text-dark);"
+                        onclick="showNotification('Supabase integration coming soon!', 'fa-bolt')">
+                        <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                            alt="Google" style="width: 20px; height: 20px;"> CONTINUE WITH GOOGLE
+                    </button>
+                </div>
+                <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-muted);">New here? <a href="#"
+                        style="color: var(--cta-bg); font-weight: 600; text-decoration: underline;">Create an
+                        account</a></p>
             </div>
 
-            <!-- Orders Info -->
-            <div class="account-section">
-                <h4
-                    style="font-family: var(--font-heading); color: var(--plum); margin-bottom: 1.2rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fa-solid fa-box-open"></i> Recent Orders
-                </h4>
-                <div id="accOrders" style="display: flex; flex-direction: column; gap: 1rem;">
-                    <!-- Mock Order 1 -->
-                    <div
-                        style="background: var(--bg); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                            <span style="font-weight: 700; font-size: 0.85rem;">#ORD-9921</span>
-                            <span style="font-size: 0.75rem; color: #22c55e; font-weight: 600;">DELIVERED</span>
-                        </div>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Assorted Gift Box
-                            of 6, Walnut Crunch</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 0.8rem; font-weight: 600;">₹2,148</span>
-                            <span style="font-size: 0.7rem; color: var(--text-muted);">Feb 24, 2026</span>
-                        </div>
+            <!-- Logged In State (Hidden by default) -->
+            <div id="loggedInState" style="display: none; text-align: left;">
+                <div class="account-section" style="margin-bottom: 2.5rem;">
+                    <h4
+                        style="font-family: var(--font-heading); color: var(--plum); margin-bottom: 1.2rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-user-circle"></i> Profile Details
+                    </h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.9rem;">
+                        <div style="display: flex; justify-content: space-between;"><span
+                                style="color: var(--text-muted);">Name:</span> <strong id="accName"></strong></div>
+                        <div style="display: flex; justify-content: space-between;"><span
+                                style="color: var(--text-muted);">Mobile:</span> <strong id="accMobile"></strong></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="cart-footer">
+        <div class="cart-footer" id="accountFooter" style="display: none;">
             <button class="checkout-btn"
                 style="background: transparent; color: var(--plum); border: 1px solid var(--plum); box-shadow: none;"
                 onclick="showNotification('Logout Successful', 'fa-sign-out-alt')">
                 LOGOUT <i class="fa-solid fa-right-from-bracket"></i>
             </button>
+        </div>
+    </div>
+
+    <!-- Menu Sidebar (New) -->
+    <div class="cart-sidebar menu-sidebar" id="menuSidebar">
+        <div class="cart-header">
+            <h2>Discover Treats</h2>
+            <button class="close-cart" id="closeMenu" onclick="toggleMenuSidebar()"><i
+                    class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" style="padding: 1.5rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 2rem;">
+                <!-- Product 1 -->
+                <div class="menu-mini-card" onclick="addToCart('SIGNATURE FUDGY', 299, './assets/signature_fudgy.png')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="./assets/signature_fudgy.png" alt="Signature Fudgy"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Signature Fudgy</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹299</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+                <!-- Product 2 -->
+                <div class="menu-mini-card" onclick="addToCart('WALNUT CRUNCH', 349, './assets/walnut_crunch.png')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="./assets/walnut_crunch.png" alt="Walnut Crunch"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Walnut Crunch</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹349</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+                <!-- Product 3 -->
+                <div class="menu-mini-card" onclick="addToCart('SALTED CARAMEL', 399, './assets/salted_caramel.png')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="./assets/salted_caramel.png" alt="Salted Caramel"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Salted Caramel</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹399</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+                <!-- Product 4 -->
+                <div class="menu-mini-card"
+                    onclick="addToCart('TRIPLE CHOCO', 349, 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=450&h=380&fit=crop')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=450&h=380&fit=crop"
+                        alt="Triple Choco"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Triple Choco</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹349</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+                <!-- Product 5 -->
+                <div class="menu-mini-card" onclick="addToCart('PEANUT BUTTER', 349, './assets/peanut_butter.png')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="./assets/peanut_butter.png" alt="Peanut Butter"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Peanut Butter</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹349</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+                <!-- Product 6 -->
+                <div class="menu-mini-card"
+                    onclick="addToCart('VEGAN DARK FUDGE', 399, './assets/vegan_dark_fudge.png')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="./assets/vegan_dark_fudge.png" alt="Vegan Dark Fudge"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Vegan Dark Fudge</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹399</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+                <!-- Product 7 -->
+                <div class="menu-mini-card" onclick="addToCart('ZESTY ORANGE', 349, './assets/zesty_orange.png')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="./assets/zesty_orange.png" alt="Zesty Orange"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Zesty Orange</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹349</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+                <!-- Product 8 -->
+                <div class="menu-mini-card" onclick="addToCart('ESPRESSO ROAST', 349, './assets/espresso_roast.png')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="./assets/espresso_roast.png" alt="Espresso Roast"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Espresso Roast</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹349</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+                <h4 style="font-family: var(--font-heading); color: var(--plum); margin-bottom: 1rem;">Gifting Bundles
+                </h4>
+                <div onclick="addToCart('Assorted Gift Box of 6', 1799, './assets/assorted_gift_box.png')"
+                    style="cursor: pointer; display: flex; align-items: center; gap: 1rem; background: var(--white); padding: 1rem; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 1rem;">
+                    <img src="./assets/assorted_gift_box.png"
+                        style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                    <div style="flex: 1;">
+                        <span style="font-size: 0.8rem; font-weight: 700; display: block;">Assorted Gift Box of 6</span>
+                        <span style="font-size: 0.9rem; color: var(--cta-bg); font-weight: 700;">₹1,799</span>
+                    </div>
+                    <button class="quick-add-btn">ADD</button>
+                </div>
+                <div onclick="addToCart('Grand Party Platter', 2999, 'https://images.unsplash.com/photo-1541696432-82c6da83c832?w=450&h=380&fit=crop')"
+                    style="cursor: pointer; display: flex; align-items: center; gap: 1rem; background: var(--white); padding: 1rem; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 1rem;">
+                    <img src="https://images.unsplash.com/photo-1541696432-82c6da83c832?w=450&h=380&fit=crop"
+                        style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                    <div style="flex: 1;">
+                        <span style="font-size: 0.8rem; font-weight: 700; display: block;">Grand Party Platter</span>
+                        <span style="font-size: 0.9rem; color: var(--cta-bg); font-weight: 700;">₹2,999</span>
+                    </div>
+                    <button class="quick-add-btn">ADD</button>
+                </div>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <button class="checkout-btn" onclick="toggleCart(); toggleMenuSidebar(false);">GO TO CART <i
+                    class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
 
@@ -155,8 +304,11 @@
         <div class="container hero-grid">
             <div class="hero-content">
                 <h1 class="hero-title"
-                    style="margin-bottom: 2rem; font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: -1px; max-width: 600px; line-height: 1.1;">
-                    Dessert isn’t a cheat.<br>It’s self-love.</h1>
+                    style="margin-bottom: 0.8rem; font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: -1px; max-width: 600px; line-height: 1.1;">
+                    You don’t need a cheat day to enjoy a brownie.</h1>
+                <p class="hero-caption"
+                    style="font-size: 1.25rem; color: var(--cta-bg); font-weight: 600; margin-bottom: 2.5rem; letter-spacing: 0.5px;">
+                    Dessert isn’t a cheat. It’s self-love.</p>
                 <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
                     <button class="btn-cta" style="margin-top:0;"
                         onclick="document.getElementById('bestsellers').scrollIntoView({behavior:'smooth'})">
@@ -256,6 +408,38 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Brownie 5 -->
+                    <div class="hot-product-card product-hover" data-href="product-zesty-orange.html"
+                        style="cursor: pointer;">
+                        <div class="badge-tag new-tag">New</div>
+                        <div class="hot-img">
+                            <img src="./assets/zesty_orange.png" alt="Zesty Orange Brownie">
+                        </div>
+                        <div class="hp-info">
+                            <p class="hp-name">ZESTY ORANGE</p>
+                            <p class="hp-hook">Citrus bliss in every fudgy bite.</p>
+                            <div class="hp-bottom">
+                                <p class="hp-price">₹349</p>
+                                <button class="quick-add-btn">ADD <i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Brownie 6 -->
+                    <div class="hot-product-card product-hover" data-href="product-espresso-roast.html"
+                        style="cursor: pointer;">
+                        <div class="badge-tag new-tag">New</div>
+                        <div class="hot-img">
+                            <img src="./assets/espresso_roast.png" alt="Espresso Roast Brownie">
+                        </div>
+                        <div class="hp-info">
+                            <p class="hp-name">ESPRESSO ROAST</p>
+                            <p class="hp-hook">Bold coffee hit with rich cocoa.</p>
+                            <div class="hp-bottom">
+                                <p class="hp-price">₹349</p>
+                                <button class="quick-add-btn">ADD <i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -339,9 +523,9 @@
                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin-top: 5rem; width: 100%; max-width: 1100px; justify-content: center;">
                 <!-- What We Use -->
                 <div class="promise-card luxury-card"
-                    style="background: linear-gradient(145deg, #f0fdf4, #ffffff); padding: 3.5rem 2.5rem; border-radius: 30px; border: 1px solid #dcfce7; text-align: left; box-shadow: 0 15px 40px rgba(76, 175, 80, 0.08); position: relative; overflow: hidden;">
+                    style="background: linear-gradient(145deg, #f0fdf4, #ffffff); padding: 3.5rem 2.5rem; border-radius: 30px; border: 1px solid #dcfce7; text-align: left; box-shadow: 0 15px 40px rgba(76, 175, 80, 0.08); position: relative; overflow: hidden; z-index: 1;">
                     <div
-                        style="position: absolute; top: -10px; right: -10px; opacity: 0.1; font-size: 8rem; color: #22c55e;">
+                        style="position: absolute; bottom: -20px; right: -20px; opacity: 0.1; font-size: 10rem; color: #22c55e; z-index: -1;">
                         <i class="fa-solid fa-leaf"></i>
                     </div>
                     <h3
@@ -373,9 +557,9 @@
 
                 <!-- What We Skip -->
                 <div class="promise-card luxury-card"
-                    style="background: linear-gradient(145deg, #fff7f7, #ffffff); padding: 3.5rem 2.5rem; border-radius: 30px; border: 1px solid #fee2e2; text-align: left; box-shadow: 0 15px 40px rgba(239, 68, 68, 0.08); position: relative; overflow: hidden;">
+                    style="background: linear-gradient(145deg, #fff7f7, #ffffff); padding: 3.5rem 2.5rem; border-radius: 30px; border: 1px solid #fee2e2; text-align: left; box-shadow: 0 15px 40px rgba(239, 68, 68, 0.08); position: relative; overflow: hidden; z-index: 1;">
                     <div
-                        style="position: absolute; top: -10px; right: -10px; opacity: 0.1; font-size: 8rem; color: #ef4444;">
+                        style="position: absolute; bottom: -20px; right: -20px; opacity: 0.1; font-size: 10rem; color: #ef4444; z-index: -1;">
                         <i class="fa-solid fa-ban"></i>
                     </div>
                     <h3
@@ -410,27 +594,127 @@
             <div class="testimonial-left" style="max-width: 600px; margin: 0 auto;">
                 <div class="section-label" style="justify-content:center;">REVIEWS</div>
                 <h2 class="section-title">What Our Customers Say</h2>
-                <p class="section-desc" style="margin: 0 auto;">Don't just take our word for it. Our brownies are loved
-                    by thousands across the country.</p>
+                <p class="section-desc" style="margin: 0 auto;">Vera Level Taste! Our community loves the guilt-free
+                    goodness.</p>
             </div>
 
-            <div class="testimonial-right" style="width: 100%; max-width: 700px; margin: 0 auto;">
-                <div class="quote-card"
-                    style="background: var(--white); padding: 3rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: left;">
-                    <div class="quote-stars"
-                        style="color: #f4a818; margin-bottom: 1.5rem; font-size: 1.2rem; letter-spacing: 2px;">★★★★★
+            <div class="testimonial-scroll-wrap">
+                <div class="testimonial-track">
+                    <!-- Set 1 -->
+                    <div class="quote-card"
+                        style="background: var(--white); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: left; width: 350px;">
+                        <div class="quote-stars" style="color: #f4a818; margin-bottom: 1rem; font-size: 1rem;">★★★★★
+                        </div>
+                        <p class="quote-text" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                            "Actually, I was bit skeptical about 'healthy' brownies, but Be'Loved really surprised me!
+                            The texture is so rich and soft. Guilt-free cravings solved!"
+                        </p>
+                        <div class="quote-author" style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 45px; height: 45px; border-radius: 50%; background: var(--lavender-light); display: flex; align-items: center; justify-content: center; color: var(--plum); font-size: 1.5rem;">
+                                <i class="fa-solid fa-user-circle"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.9rem;">Shreya Iyer</h4>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Verified Buyer</span>
+                            </div>
+                        </div>
                     </div>
-                    <p class="quote-text"
-                        style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem; font-style: italic;">
-                        "Honestly the most decadent brownies I've ever tasted. The salted caramel swirl is to die for!
-                        The edges are perfectly chewy and the center is gooey and rich. I order a box every week!"
-                    </p>
-                    <div class="quote-author" style="display: flex; align-items: center; gap: 1rem;">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&q=85"
-                            alt="Priya Mehta" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
-                        <div>
-                            <h4 style="font-size: 1rem;">Priya Mehta</h4>
-                            <span style="font-size: 0.85rem; color: var(--text-muted);">Verified Buyer</span>
+                    <div class="quote-card"
+                        style="background: var(--white); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: left; width: 350px;">
+                        <div class="quote-stars" style="color: #f4a818; margin-bottom: 1rem; font-size: 1rem;">★★★★★
+                        </div>
+                        <p class="quote-text" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                            "Be’Loved brownies are just wow! ❤️ Usually maida-free na taste compromising ah irukum, but
+                            idhu vera level. Semma fudgy and perfectly sweet!"
+                        </p>
+                        <div class="quote-author" style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 45px; height: 45px; border-radius: 50%; background: var(--lavender-light); display: flex; align-items: center; justify-content: center; color: var(--plum); font-size: 1.5rem;">
+                                <i class="fa-solid fa-user-circle"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.9rem;">Anitha Balan</h4>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Loyal Customer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quote-card"
+                        style="background: var(--white); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: left; width: 350px;">
+                        <div class="quote-stars" style="color: #f4a818; margin-bottom: 1rem; font-size: 1rem;">★★★★★
+                        </div>
+                        <p class="quote-text" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                            "மைதா மற்றும் சர்க்கரை இல்லாமல் இவ்வளவு ருசியாக இருக்கும் என்று எதிர்பார்க்கவில்லை. அந்த
+                            தரம் மற்றும் பேக்கிங் மிகவும் அருமை!"
+                        </p>
+                        <div class="quote-author" style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 45px; height: 45px; border-radius: 50%; background: var(--lavender-light); display: flex; align-items: center; justify-content: center; color: var(--plum); font-size: 1.5rem;">
+                                <i class="fa-solid fa-user-circle"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.9rem;">Karthik Raja</h4>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Food Critic</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicated Set for Smooth Loop -->
+                    <div class="quote-card"
+                        style="background: var(--white); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: left; width: 350px;">
+                        <div class="quote-stars" style="color: #f4a818; margin-bottom: 1rem; font-size: 1rem;">★★★★★
+                        </div>
+                        <p class="quote-text" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                            "Actually, I was bit skeptical about 'healthy' brownies, but Be'Loved really surprised me!
+                            The texture is so rich and soft. Guilt-free cravings solved!"
+                        </p>
+                        <div class="quote-author" style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 45px; height: 45px; border-radius: 50%; background: var(--lavender-light); display: flex; align-items: center; justify-content: center; color: var(--plum); font-size: 1.5rem;">
+                                <i class="fa-solid fa-user-circle"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.9rem;">Shreya Iyer</h4>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Verified Buyer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quote-card"
+                        style="background: var(--white); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: left; width: 350px;">
+                        <div class="quote-stars" style="color: #f4a818; margin-bottom: 1rem; font-size: 1rem;">★★★★★
+                        </div>
+                        <p class="quote-text" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                            "Be’Loved brownies are just wow! ❤️ Usually maida-free na taste compromising ah irukum, but
+                            idhu vera level. Semma fudgy and perfectly sweet!"
+                        </p>
+                        <div class="quote-author" style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 45px; height: 45px; border-radius: 50%; background: var(--lavender-light); display: flex; align-items: center; justify-content: center; color: var(--plum); font-size: 1.5rem;">
+                                <i class="fa-solid fa-user-circle"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.9rem;">Anitha Balan</h4>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Loyal Customer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quote-card"
+                        style="background: var(--white); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: left; width: 350px;">
+                        <div class="quote-stars" style="color: #f4a818; margin-bottom: 1rem; font-size: 1rem;">★★★★★
+                        </div>
+                        <p class="quote-text" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                            "மைதா மற்றும் சர்க்கரை இல்லாமல் இவ்வளவு ருசியாக இருக்கும் என்று எதிர்பார்க்கவில்லை. அந்த
+                            தரம் மற்றும் பேக்கிங் மிகவும் அருமை!"
+                        </p>
+                        <div class="quote-author" style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 45px; height: 45px; border-radius: 50%; background: var(--lavender-light); display: flex; align-items: center; justify-content: center; color: var(--plum); font-size: 1.5rem;">
+                                <i class="fa-solid fa-user-circle"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.9rem;">Karthik Raja</h4>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Food Critic</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -506,37 +790,12 @@
             document.getElementById('navMenu').classList.toggle('open');
         }
 
-        // Cart toggle
-        function toggleCart() {
-            document.getElementById('cartSidebar').classList.toggle('open');
-            document.getElementById('cartOverlay').classList.toggle('show');
-            if (document.getElementById('accountSidebar').classList.contains('open')) {
-                document.getElementById('accountSidebar').classList.remove('open');
-            }
-        }
+        // Connect Sidebar buttons
+        const accBtn = document.getElementById('accountBtn');
+        if (accBtn) accBtn.onclick = () => toggleAccount();
 
-        // Account toggle
-        function toggleAccount(forceClose = null) {
-            const sidebar = document.getElementById('accountSidebar');
-            const overlay = document.getElementById('cartOverlay');
-
-            if (forceClose === false) {
-                sidebar.classList.remove('open');
-                return;
-            }
-
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('show');
-
-            if (document.getElementById('cartSidebar').classList.contains('open')) {
-                document.getElementById('cartSidebar').classList.remove('open');
-            }
-        }
-
-        // Connect Account buttons
-        document.getElementById('accountBtn').onclick = () => toggleAccount();
-        const mAccount = document.getElementById('mobileAccountBtn');
-        if (mAccount) mAccount.onclick = () => toggleAccount();
+        const mMenu = document.getElementById('mobileMenuBtn');
+        if (mMenu) mMenu.onclick = () => toggleMenuSidebar();
 
         // Hot selling scroll arrows
         const row = document.getElementById('hotProductsRow');
@@ -546,6 +805,33 @@
             });
             document.getElementById('hotPrev').addEventListener('click', () => {
                 row.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+
+            // Grab to scroll
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            row.addEventListener('mousedown', (e) => {
+                isDown = true;
+                row.style.cursor = 'grabbing';
+                startX = e.pageX - row.offsetLeft;
+                scrollLeft = row.scrollLeft;
+            });
+            row.addEventListener('mouseleave', () => {
+                isDown = false;
+                row.style.cursor = 'grab';
+            });
+            row.addEventListener('mouseup', () => {
+                isDown = false;
+                row.style.cursor = 'grab';
+            });
+            row.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - row.offsetLeft;
+                const walk = (x - startX) * 2;
+                row.scrollLeft = scrollLeft - walk;
             });
         }
 
@@ -571,12 +857,14 @@
     <!-- Mobile Sticky Bottom Bar -->
     <div class="mobile-bottom-bar">
         <a href="#home" class="m-nav-item active"><i class="fa-solid fa-house"></i><span>Home</span></a>
+        <a href="javascript:void(0)" class="m-nav-item" id="mobileMenuBtn" onclick="toggleMenuSidebar()"><i
+                class="fa-solid fa-cookie-bite"></i><span>Menu</span></a>
         <a href="https://wa.me/919750070001" class="m-nav-item whatsapp" target="_blank"><i
                 class="fa-brands fa-whatsapp"></i><span>Order</span></a>
-        <a href="javascript:void(0)" class="m-nav-item" onclick="toggleCart()"><i
-                class="fa-solid fa-bag-shopping"></i><span>Cart</span></a>
-        <a href="javascript:void(0)" class="m-nav-item" id="mobileAccountBtn"><i
-                class="fa-regular fa-user"></i><span>Account</span></a>
+        <a href="javascript:void(0)" class="m-nav-item m-cart-btn" onclick="toggleCart()" style="position:relative;">
+            <i class="fa-solid fa-bag-shopping"></i><span>Cart</span>
+            <span class="cart-count" style="top: -5px; right: 50%; transform: translateX(15px);">0</span>
+        </a>
     </div>
 </body>
 

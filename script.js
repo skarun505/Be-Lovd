@@ -17,11 +17,64 @@ function saveCart() {
     localStorage.setItem('belovd_cart', JSON.stringify(cart));
 }
 
-function toggleCart() {
+function toggleCart(forceClose = null) {
     const sidebar = document.getElementById('cartSidebar');
     const overlay = document.getElementById('cartOverlay');
+
+    if (forceClose === false) {
+        if (sidebar) sidebar.classList.remove('open');
+        if (overlay && !document.querySelector('.cart-sidebar.open')) overlay.classList.remove('show');
+        return;
+    }
+
     if (sidebar) sidebar.classList.toggle('open');
     if (overlay) overlay.classList.toggle('show');
+
+    // Close others
+    const menuS = document.getElementById('menuSidebar');
+    const accS = document.getElementById('accountSidebar');
+    if (menuS && menuS.classList.contains('open')) menuS.classList.remove('open');
+    if (accS && accS.classList.contains('open')) accS.classList.remove('open');
+}
+
+function toggleMenuSidebar(forceClose = null) {
+    const sidebar = document.getElementById('menuSidebar');
+    const overlay = document.getElementById('cartOverlay');
+
+    if (forceClose === false) {
+        if (sidebar) sidebar.classList.remove('open');
+        if (overlay && !document.querySelector('.cart-sidebar.open')) overlay.classList.remove('show');
+        return;
+    }
+
+    if (sidebar) sidebar.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('show');
+
+    // Close others
+    const cartS = document.getElementById('cartSidebar');
+    const accS = document.getElementById('accountSidebar');
+    if (cartS && cartS.classList.contains('open')) cartS.classList.remove('open');
+    if (accS && accS.classList.contains('open')) accS.classList.remove('open');
+}
+
+function toggleAccount(forceClose = null) {
+    const sidebar = document.getElementById('accountSidebar');
+    const overlay = document.getElementById('cartOverlay');
+
+    if (forceClose === false) {
+        if (sidebar) sidebar.classList.remove('open');
+        if (overlay && !document.querySelector('.cart-sidebar.open')) overlay.classList.remove('show');
+        return;
+    }
+
+    if (sidebar) sidebar.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('show');
+
+    // Close others
+    const cartS = document.getElementById('cartSidebar');
+    const menuS = document.getElementById('menuSidebar');
+    if (cartS && cartS.classList.contains('open')) cartS.classList.remove('open');
+    if (menuS && menuS.classList.contains('open')) menuS.classList.remove('open');
 }
 
 function addToCart(name, price, image) {
@@ -54,15 +107,34 @@ function updateQuantity(index, change) {
 
 function updateCartUI() {
     const cartItems = document.getElementById('cartItems');
-    const cartCount = document.getElementById('cartCount');
+    const cartCounts = document.querySelectorAll('.cart-count');
     const cartTotal = document.getElementById('cartTotal');
-    if (!cartItems || !cartCount || !cartTotal) return;
+    if (!cartItems || !cartTotal) return;
 
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems;
+    cartCounts.forEach(el => el.textContent = totalItems);
 
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     cartTotal.textContent = `₹${total.toLocaleString('en-IN')}`;
+
+    // Free delivery progress logic
+    const FREE_DELIVERY_THRESHOLD = 999;
+    const amountToFree = document.getElementById('amountToFree');
+    const deliveryProgress = document.getElementById('deliveryProgress');
+
+    if (amountToFree && deliveryProgress) {
+        if (total >= FREE_DELIVERY_THRESHOLD) {
+            amountToFree.parentElement.innerHTML = `You've unlocked <span style="color: #c15e39;">Free Delivery!</span> 🚚`;
+            deliveryProgress.style.width = '100%';
+            deliveryProgress.style.background = '#22c55e'; // Green for success
+        } else {
+            const remaining = FREE_DELIVERY_THRESHOLD - total;
+            amountToFree.parentElement.innerHTML = `Add <span id="amountToFree">₹${remaining}</span> more for <span style="color: #c15e39;">Free Delivery!</span>`;
+            const percentage = Math.min((total / FREE_DELIVERY_THRESHOLD) * 100, 100);
+            deliveryProgress.style.width = `${percentage}%`;
+            deliveryProgress.style.background = '#c15e39';
+        }
+    }
 
     if (cart.length === 0) {
         cartItems.innerHTML = `
@@ -122,6 +194,23 @@ function filterCategory(cat) {
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
+
+    // Auth State Display (Mock check)
+    // For now we set loggedIn to false so the user sees the new Auth view.
+    const loggedIn = false;
+    const loggedOutState = document.getElementById('loggedOutState');
+    const loggedInState = document.getElementById('loggedInState');
+    const accountFooter = document.getElementById('accountFooter');
+
+    if (loggedIn) {
+        if (loggedOutState) loggedOutState.style.display = 'none';
+        if (loggedInState) loggedInState.style.display = 'block';
+        if (accountFooter) accountFooter.style.display = 'block';
+    } else {
+        if (loggedOutState) loggedOutState.style.display = 'block';
+        if (loggedInState) loggedInState.style.display = 'none';
+        if (accountFooter) accountFooter.style.display = 'none';
+    }
 
     // Close cart
     const closeBtn = document.getElementById('closeCart');

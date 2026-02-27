@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +16,13 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Main Style -->
     <link rel="stylesheet" href="style.css">
     <style>
@@ -30,12 +33,14 @@
             display: flex;
             align-items: center;
         }
+
         .product-detail-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
+
         .product-detail-img img {
             width: 100%;
             border-radius: 12px;
@@ -43,6 +48,7 @@
             object-fit: cover;
             height: 500px;
         }
+
         .product-badge {
             display: inline-block;
             background-color: var(--cta-bg);
@@ -55,11 +61,13 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
+
         .product-title {
             font-size: clamp(2.5rem, 4vw, 3.5rem);
             margin-bottom: 0.5rem;
             color: var(--text-dark);
         }
+
         .product-price {
             font-size: 2rem;
             color: var(--cta-bg);
@@ -67,11 +75,13 @@
             margin-bottom: 1.5rem;
             font-family: var(--font-heading);
         }
+
         .product-hook {
             font-size: 1.2rem;
             color: var(--text-muted);
             margin-bottom: 2rem;
         }
+
         .highlight-box {
             background: rgba(226, 178, 172, 0.15);
             border-left: 4px solid var(--cta-bg);
@@ -82,9 +92,11 @@
             color: var(--cta-bg);
             font-size: 1.05rem;
         }
+
         .ingredients-box {
             margin-bottom: 2.5rem;
         }
+
         .ingredients-box h4 {
             font-family: var(--font-heading);
             font-size: 1.3rem;
@@ -94,31 +106,83 @@
             align-items: center;
             gap: 0.5rem;
         }
+
         .ingredients-box p {
             color: var(--text-muted);
             line-height: 1.6;
         }
+
         @media (max-width: 768px) {
             .product-detail-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
             .product-detail-section {
                 padding: 6rem 0 3rem;
             }
+
             .product-detail-img img {
                 height: 350px;
             }
         }
+
+        .sticky-add-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1001;
+            /* Above normal mobile nav */
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .sticky-add-bar.show {
+            transform: translateY(-75px);
+        }
+
+        .sticky-title-price {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sticky-add-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .sticky-add-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
     </style>
 </head>
-<body>
 
+<body>
     <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h2>Your Cart</h2>
             <button class="close-cart" id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="free-delivery-banner" id="freeDeliveryBanner"
+            style="padding: 1rem 2rem; background: #fdf2f2; border-bottom: 1px solid var(--border); font-size: 0.85rem; text-align: center;">
+            <p style="margin-bottom: 0.5rem; color: var(--plum); font-weight: 600;">Add <span
+                    id="amountToFree">₹999</span> more for <span style="color: #c15e39;">Free Delivery!</span></p>
+            <div style="width: 100%; height: 6px; background: #e0e0e0; border-radius: 10px; overflow: hidden;">
+                <div id="deliveryProgress"
+                    style="width: 0%; height: 100%; background: #c15e39; transition: width 0.3s ease;"></div>
+            </div>
         </div>
         <div class="cart-items" id="cartItems">
             <div class="empty-cart">
@@ -132,12 +196,105 @@
                 <span>Total:</span>
                 <span id="cartTotal">₹0</span>
             </div>
-            <button class="checkout-btn" id="checkoutBtn" onclick="window.location.href='checkout.html'">SECURE CHECKOUT <i class="fa-solid fa-lock"></i></button>
+            <button class="checkout-btn" id="checkoutBtn" onclick="window.location.href='checkout.html'">SECURE CHECKOUT
+                <i class="fa-solid fa-lock"></i></button>
         </div>
     </div>
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-overlay" id="cartOverlay"
+        onclick="toggleCart(false); toggleAccount(false); toggleMenuSidebar(false);"></div>
 
-    <!-- Navigation -->
+    <!-- Account Sidebar -->
+    <div class="cart-sidebar account-sidebar" id="accountSidebar">
+        <div class="cart-header">
+            <h2>My Account</h2>
+            <button class="close-cart" id="closeAccount" onclick="toggleAccount()"><i
+                    class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items"
+            style="padding: 2rem; display: flex; flex-direction: column; justify-content: center; text-align: center; height: 100%;">
+            <div id="loggedOutState">
+                <div style="font-size: 4rem; color: var(--lavender-dark); margin-bottom: 1.5rem;">
+                    <i class="fa-regular fa-user-circle"></i>
+                </div>
+                <h3
+                    style="font-family: var(--font-heading); color: var(--plum); font-size: 1.8rem; margin-bottom: 0.5rem;">
+                    Welcome Back</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">Log in to access your order
+                    history and manage your preferences.</p>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <button class="btn-primary" style="width: 100%; justify-content: center; padding: 1rem;"
+                        onclick="showNotification('Supabase integration coming soon!', 'fa-bolt')">
+                        LOGIN WITH OTP <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Sidebar -->
+    <div class="cart-sidebar menu-sidebar" id="menuSidebar">
+        <div class="cart-header">
+            <h2>Discover Treats</h2>
+            <button class="close-cart" id="closeMenu" onclick="toggleMenuSidebar()"><i
+                    class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" style="padding: 1.5rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 2rem;">
+                <div class="menu-mini-card" onclick="addToCart('SIGNATURE FUDGY', 299, './assets/signature_fudgy.png')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="./assets/signature_fudgy.png" alt="Signature Fudgy"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Signature Fudgy</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹299</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+                <div class="menu-mini-card" onclick="addToCart('WALNUT CRUNCH', 349, './assets/walnut_crunch.png')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="./assets/walnut_crunch.png" alt="Walnut Crunch"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Walnut Crunch</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹349</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+                <div class="menu-mini-card" onclick="addToCart('ZESTY ORANGE', 349, './assets/zesty_orange.png')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="./assets/zesty_orange.png" alt="Zesty Orange"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Zesty Orange</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹349</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+                <div class="menu-mini-card" onclick="addToCart('ESPRESSO ROAST', 349, './assets/espresso_roast.png')"
+                    style="cursor: pointer; background: var(--bg); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition);">
+                    <img src="./assets/espresso_roast.png" alt="Espresso Roast"
+                        style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+                    <h4
+                        style="font-size: 0.75rem; color: var(--plum); margin-bottom: 0.3rem; text-transform: uppercase;">
+                        Espresso Roast</h4>
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">₹349</span>
+                    <button class="quick-add-btn"
+                        style="width: 100%; margin-top: 0.8rem; padding: 0.4rem; font-size: 0.7rem;">ADD +</button>
+                </div>
+            </div>
+            <p style="text-align: center;"><a href="index.html#bestsellers" class="btn-primary"
+                    style="padding: 0.5rem 1rem; font-size: 0.8rem;">VIEW FULL MENU</a></p>
+        </div>
+        <div class="cart-footer">
+            <button class="checkout-btn" onclick="toggleCart(); toggleMenuSidebar(false);">GO TO CART <i
+                    class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+
     <nav class="navbar scrolled" id="navbar" style="background: var(--white); box-shadow: var(--shadow-sm);">
         <div class="container nav-container">
             <a href="index.html" class="logo">
@@ -149,16 +306,17 @@
                 <li><a href="about.html" class="nav-link">About</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="nav-icon-btn" id="accountBtn">
+                <button class="nav-icon-btn" id="accountBtn" onclick="toggleAccount()">
                     <i class="fa-regular fa-user"></i>
                     <span>My Account</span>
                 </button>
                 <button class="cart-icon-btn" id="cartBtn" onclick="toggleCart()">
                     <i class="fa-solid fa-bag-shopping"></i>
                     <span>Cart</span>
-                    <span class="cart-count" id="cartCount">0</span>
+                    <span class="cart-count">0</span>
                 </button>
-                <button class="hamburger" id="hamburger" onclick="document.getElementById('navMenu').classList.toggle('open')">
+                <button class="hamburger" id="hamburger"
+                    onclick="document.getElementById('navMenu').classList.toggle('open')">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -176,17 +334,20 @@
                 <h1 class="product-title">SIGNATURE FUDGY</h1>
                 <p class="product-price">₹299</p>
                 <p class="product-hook">Rich. Gooey. Crowd Favorite.</p>
-                
+
                 <div class="highlight-box">
                     ⭐ Our #1 Most Loved – Over 10,000 Boxes Sold!
                 </div>
-                
+
                 <div class="ingredients-box">
                     <h4><i class="fa-solid fa-seedling" style="color:var(--cta-bg);"></i> Ingredients</h4>
-                    <p>Premium Dark Cocoa, Organic Flour, Free-range Eggs, Real Butter, Cane Sugar, Madagascar Vanilla Extract.</p>
+                    <p>Premium Dark Cocoa, Organic Flour, Free-range Eggs, Real Butter, Cane Sugar, Madagascar Vanilla
+                        Extract.</p>
                 </div>
-                
-                <button class="btn-cta product-add-btn" style="width: 100%; max-width: 300px; padding: 1rem; font-size: 1.1rem;" data-name="SIGNATURE FUDGY" data-price="₹299" data-img="./assets/signature_fudgy.png">
+
+                <button class="btn-cta product-add-btn"
+                    style="width: 100%; max-width: 300px; padding: 1rem; font-size: 1.1rem;" data-name="SIGNATURE FUDGY"
+                    data-price="₹299" data-img="./assets/signature_fudgy.png">
                     ADD TO CART <i class="fa-solid fa-cart-plus"></i>
                 </button>
                 <div style="margin-top: 1.5rem; display: flex; gap: 1rem; color: var(--text-muted); font-size: 0.9rem;">
@@ -198,7 +359,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer" id="contact">
+    <footer class="footer" id="contact" style="margin-bottom: 70px;">
         <div class="container footer-grid">
             <div class="footer-brand">
                 <a href="index.html" class="footer-logo">
@@ -249,6 +410,30 @@
             </div>
         </div>
     </footer>
+
+    <div class="mobile-bottom-bar" id="mobileNav">
+        <a href="index.html#home" class="m-nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+        <a href="javascript:void(0)" class="m-nav-item" id="mobileMenuBtn" onclick="toggleMenuSidebar()"><i
+                class="fa-solid fa-cookie-bite"></i><span>Menu</span></a>
+        <a href="https://wa.me/919750070001" class="m-nav-item whatsapp" target="_blank"><i
+                class="fa-brands fa-whatsapp"></i><span>Order</span></a>
+        <a href="javascript:void(0)" class="m-nav-item m-cart-btn" onclick="toggleCart()" style="position:relative;">
+            <i class="fa-solid fa-bag-shopping"></i><span>Cart</span>
+            <span class="cart-count">0</span>
+        </a>
+    </div>
+
+    <!-- Sticky Add to Cart (Mobile) -->
+    <div class="sticky-add-bar" id="stickyAddBar">
+        <div class="sticky-title-price">
+            <span class="sticky-add-title">SIGNATURE FUDGY</span>
+            <span class="sticky-add-price">₹299</span>
+        </div>
+        <button class="btn-cta product-add-btn" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;"
+            data-name="SIGNATURE FUDGY" data-price="299" data-img="./assets/signature_fudgy.png">
+            ADD <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
     <script src="script.js"></script>
     <script>
         // Navbar scroll effect
@@ -264,21 +449,40 @@
         }
 
         // Cart toggle is already in script.js but we double check
-        if(typeof toggleCart === 'undefined') {
+        if (typeof toggleCart === 'undefined') {
             function toggleCart() {
                 var sidebar = document.getElementById('cartSidebar');
                 var overlay = document.getElementById('cartOverlay');
-                if(sidebar) sidebar.classList.toggle('open');
-                if(overlay) overlay.classList.toggle('show');
+                if (sidebar) sidebar.classList.toggle('open');
+                if (overlay) overlay.classList.toggle('show');
             }
         }
     </script>
 
-    <!-- Mobile Sticky Bottom Bar -->
-    <div class="mobile-bottom-bar">
-        <a href="index.html#home" class="m-nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
-        <a href="https://wa.me/919750070001" class="m-nav-item whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i><span>Order</span></a>
-        <a href="javascript:void(0)" class="m-nav-item" onclick="toggleCart()"><i class="fa-solid fa-bag-shopping"></i><span>Cart</span></a>
-    </div>
+
+
+    <script>
+        // Intersection Observer for Sticky Add Bar
+        document.addEventListener('DOMContentLoaded', () => {
+            const addBtn = document.querySelector('.product-add-btn');
+            const stickyBar = document.getElementById('stickyAddBar');
+            const mobileNav = document.getElementById('mobileNav');
+
+            if (addBtn && stickyBar && mobileNav) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        // If the button is not intersecting (scrolled past), show sticky bar
+                        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+                            stickyBar.classList.add('show');
+                        } else {
+                            stickyBar.classList.remove('show');
+                        }
+                    });
+                }, { threshold: 0 });
+                observer.observe(addBtn);
+            }
+        });
+    </script>
 </body>
+
 </html>
